@@ -1,0 +1,39 @@
+*{margin: 0; padding: 0;box-sizing: border-box;}
+.nav_bar1{
+    display: inline-flex;
+  
+}
+body{background-color: tomato;}
+.nav_bar1 a{
+    margin: 25xp;
+    padding:20px ;
+    list-style: none;
+    text-decoration: none;
+}
+.Nav_Bar-Menu{
+    
+    background-color: #000000c4; 
+    height: 65px;
+    
+}
+.nav_bar1 a li{
+    font-size: 16px;
+    color: rgb(211, 212, 218);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    left: 40px;
+    
+}
+.nav_bar1 a li:hover{
+    text-shadow: 3px 5px 15px rgb(255, 255, 255);
+    transition: 1s;
+
+}
+.nav_bar1  li{
+    padding-left:40px ;
+}
+.nav_bar1 a li:hover{
+color: black;
+font-weight: normal;
+margin: 19;
+transition: 0.5s;
+}

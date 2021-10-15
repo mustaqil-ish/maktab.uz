@@ -1,0 +1,47 @@
+<div class="container">
+    <form action="">
+        <div class="form-group">
+            <label for="firstName">Ism:</label>
+            <input ngModel required name="firstName" #firstName="ngModel" (change)="onNameChange(firstName)" type="text"
+                id="firstName" class="form-control">
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">Ismni kiritish majburiy</div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="familiya">Familiya</label>
+            <input ngModel name="familiya" #familiya="ngModel" (change)="OnFamiliyaChange(familiya)" type="text"
+                id="familiya" class="form-control">
+
+
+        </div>
+
+        <div class="form-group">
+            <label for="xabar">Taklif va Murojaat</label>
+            <textarea ngModel #xabar="ngModel" (change)="OnXabarChange(xabar)" name="xabar" id="xabar"
+                class="form-control" placeholder="xabar" aria-describedby="helpId"></textarea>
+        </div><br>
+
+
+        <div class="form-group">
+            <label>Jinsni tasdiqlash</label>
+            <select multiple ngModel name="contact" class="form-control">
+                <option *ngFor="let cmethod of contact" [value]="cmethod.type">Male</option>
+
+            </select>
+
+        </div><br>
+
+        <div class="checkbox">
+            <label for="">
+                <input ngModel type="checkbox" name="isSubscribed">
+                Ma'lumotlarni tasdiqlash
+            </label>
+        </div><br>
+
+        <button class="btn btn-danger">Jo'natish</button>
+    </form>
+</div>
+<br><br>
+
+
