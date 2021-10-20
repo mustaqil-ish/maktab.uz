@@ -18,15 +18,17 @@
         <td>{{u.ism}}</td>
         <td>{{u.familiya}}</td>
         <td>{{u.yosh}}</td>
-        <td>{{u.jins}}</td>
-        <td>{{u.maosh}}</td>
-        <td><button class="btn btn-danger" (click)="ochirish(u.id)">O'chirish</button> </td>
+        <td>{{u.jins}}</td>     
+       <td>{{u.maosh}}</td>  
+      <td><button class="btn btn-danger" (click)="ochirish(u.id)"><i   class="fa fa-trash" aria-hidden="true"></i></button> </td>
+      <td><button class="btn btn-primary" (click)="ochirish(u.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
+        
       </tr>
     </tbody>
   </table>
 </div>
 <div class="col-md-6 col-12 ">
-  <form  [formGroup]='createForm' (ngSubmit)="saqlash ()">
+  <form  [formGroup]='createForm' (ngSubmit)="saqlash()">
 <div class="form-group">
 <label for="ism">Ism</label>
 <input formControlName='ism' type="text" id="ism" class="form-control" placeholder="Ismni kiriting">
@@ -39,7 +41,7 @@
 </div>
 <div class="form-group">
 <label for="yosh">Yosh</label>
-<input formControlName='yosh' type="text" id="yosh" class="form-control" placeholder="Yoshingizni kiriting">
+<input formControlName='yosh' type="number" id="yosh" class="form-control" placeholder="Yoshingizni kiriting">
 <br>
 </div>
 <div class="form-group">
@@ -49,7 +51,7 @@
 </div>
 <div class="form-group">
 <label for="maosh">Maosh</label>
-<input formControlName='maosh' type="text" id="maosh" class="form-control" placeholder="Maoshni kiriting">
+<input formControlName='maosh' type="number" id="maosh" class="form-control" placeholder="Maoshni kiriting">
 </div>
 <br>
 <button class="btn btn-success" value="Saqlash">Saqlash</button>
@@ -57,6 +59,5 @@
 <!-- The End -->
 </form>
 </div>
-
 </div>
 </div>

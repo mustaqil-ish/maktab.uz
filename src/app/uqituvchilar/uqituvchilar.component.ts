@@ -17,7 +17,7 @@ createForm:any;
 
 refresh(){
   this.http.get(this.url).subscribe(u => {
-    this.uqituvchilar =u;
+    this.uqituvchilar = u;
    });
 }
 
@@ -31,21 +31,26 @@ this.createForm = this.formBuilder.group({
   maosh:['']
 });
 
-
-
-   
   }
   saqlash(){
     const uqituvchilar = this.createForm.value;
     this.http.post(this.url,uqituvchilar).subscribe(data => {
   this.refresh();
-    })
+    });
   }
   ochirish(id:number){
    if(id){
      this.http.delete(this.url+"/" + id).subscribe(date =>{
        this.refresh();
-     })
+     });
    }
   }
+
+  updateUqtuvchi(updateUqtuvchi:Object){
+    this.http.put(this.url,this.uqituvchilar).subscribe (date =>{
+      this.refresh();
+    })
+
+  }
+
 }

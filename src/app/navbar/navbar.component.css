@@ -1,4 +1,4 @@
-*{margin: 0; padding: 0;box-sizing: border-box;}
+/* *{margin: 0; padding: 0;box-sizing: border-box;}
 .nav_bar1{
     display: inline-flex;
   
@@ -36,4 +36,20 @@ color: black;
 font-weight: normal;
 margin: 19;
 transition: 0.5s;
+} */
+
+.nav-item a{
+    padding: 20px;
+    font-size: 16px;
+    color: rgb(39, 39, 41);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
+.navbar  a{
+    margin-left: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    
+}
+
+

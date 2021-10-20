@@ -1,18 +1,65 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Ism</th>
-        <th>Familiya</th>
-      </tr>
+<div class="container">
+<div class="row">
+
+<div class="col-md-6 col-12">
+
+<table class="table table-striped table-inverse table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      <th>ID</th>
+      <th>Ism</th>
+      <th>Familiya</th>
+      <th>Sharif</th>
+      <th>Yosh</th>
+      <th>Sinf</th>
+    </tr>
     </thead>
     <tbody>
-      <tr>
-        <td scope="row">1</td>
-        <td>Sardor</td>
-        <td>Haydarov</td>
-      </tr>
-      
+      <tr *ngFor="let o of uquvchilar">
+        <td scope="row">{{o.id}}</td>
+        <td>{{o.ism}}</td>
+        <td>{{o.familiya}}</td>
+        <td>{{o.sharif}}</td>
+        <td>{{o.yosh}}</td>
+        <td>{{o.sinf}}</td>
+        <td><button class="btn btn-danger" (click)="ochirish(o.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
+        <td><button class="btn btn-primary" (click)="ochirish(o.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
+      </tr> 
     </tbody>
-  </table>
+</table>
+</div>
+<!-- Saqlash -->
+<div class="col-md-6  col-6">
+<form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+<div class="form-group">
+  <label for="ism">Ism</label>
+  <input formControlName='ism'  type="text"  id="ism" class="form-control" placeholder="Ismni kiriting" >
+</div>
+<br>
+<div class="form-group">
+  <label for="familiya">Familiya</label>
+  <input formControlName='familiya'  type="text"  id="familiya" class="form-control" placeholder="Familiyani kiriting" >
+</div>
+<br>
+<div class="form-group">
+  <label for="sharif">Sharifi</label>
+  <input formControlName='sharif'  type="text"  id="sharif" class="form-control" placeholder="Otasini ismini kiriting" >
+</div>
+<br>
+<div class="form-group">
+  <label for="yosh">Yosh</label>
+  <input formControlName='yosh'  type="number"  id="yosh" class="form-control" placeholder="Yoshi kiriting" >
+</div>
+<br>
+<div class="form-group">
+  <label for="sinf">Sinf</label>
+  <input formControlName='sinf'  type="number"  id="sinf" class="form-control" placeholder="Nechanchi sinf? " >
+</div>
+<br>
+<button  class="btn btn-success" value="saqlash">Saqlash</button>
+ <button id="btn1" type="reset" class="btn btn-secondary">Tozalash</button>
 
+</form>
+</div>
+</div>
+</div>

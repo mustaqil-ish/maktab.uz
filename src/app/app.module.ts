@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule,Routes } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UquvchilarComponent } from './uquvchilar/uquvchilar.component';
 import { UqituvchilarComponent } from './uqituvchilar/uqituvchilar.component';
@@ -15,6 +15,7 @@ import { TogarakComponent } from './togarak/togarak.component';
 import { InfoComponent } from './info/info.component';
 import { MoreComponent } from './more/more.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+// import { RoutingModule } from './routing/routing.module';
 
 
 const routes:Routes=[
@@ -46,12 +47,12 @@ const routes:Routes=[
   ],
   imports: [
     BrowserModule,
-     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    
     
   ],
   providers: [],
