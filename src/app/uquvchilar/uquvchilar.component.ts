@@ -12,6 +12,7 @@ export class UquvchilarComponent implements OnInit {
   url="http://localhost:8080/uquvchilar";
   uquvchilar:any;
   createForm:any;
+  tahrirlash = false;
 
   constructor(private http:HttpClient ,private formBuilder:FormBuilder) { }
 
@@ -26,6 +27,7 @@ refresh(){
 
     this.refresh();
     this.createForm = this.formBuilder.group({
+      id:[''],
       ism:[''],
       familiya:[''],
       sharif:[''],
@@ -38,9 +40,17 @@ refresh(){
 saqlash(){
 
 const uquvchilar = this.createForm.value;
-this.http.post(this.url, uquvchilar).subscribe(data =>{
+if(!this.tahrirlash){
+  this.http.post(this.url, uquvchilar).subscribe(data =>{
 this.refresh();
 });
+}
+else {
+  this.http.put(this.url, uquvchilar).subscribe(data => {
+    this.refresh();
+    
+  });
+}
 
 }
 ochirish(id:number){
@@ -49,6 +59,11 @@ ochirish(id:number){
       this.refresh();
     });
   }
+}
+
+tahrirlashniBoshlash(uquvchilar: any) {
+  this.createForm.reset(uquvchilar)
+  this.tahrirlash = true;
 }
 
 }

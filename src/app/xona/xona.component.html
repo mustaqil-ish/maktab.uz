@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row">
     
@@ -20,7 +21,7 @@
             <td>{{x.nom}}</td>
             <td>{{x.bino}}</td>       
             <td><button class="btn btn-danger" (click)="ochirish(x.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
-            <td><button class="btn btn-primary" (click)="ochirish(x.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
+            <td><button class="btn btn-primary" (click)="tahrirlashniBoshlash(x)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
           </tr> 
         </tbody>
     </table>
@@ -29,6 +30,10 @@
     
     <div class="col-md-6  col-12">
     <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input formControlName='id'  type="number"  id="id" class="form-control" readonly >
+      </div>
     <div class="form-group">
       <label for="sigim">Sigim</label>
       <input formControlName='sigim'  type="number"  id="sigim" class="form-control" placeholder="Sigimni kiriting" >

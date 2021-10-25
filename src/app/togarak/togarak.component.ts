@@ -9,41 +9,52 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TogarakComponent implements OnInit {
 
-  url="http://localhost:8080/togaraklar";
-  togaraklar:any;
-  createForm:any;
+  url = "http://localhost:8080/togaraklar";
+  togaraklar: any;
+  createForm: any;
+  tahrirlash = false;
 
-  constructor(private http:HttpClient,private formBuilder:FormBuilder) { }
-refresh(){
-  this.http.get(this.url).subscribe(t => { 
-this.togaraklar = t;
-  });
-}
-
-
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  refresh() {
+    this.http.get(this.url).subscribe(t => {
+      this.togaraklar = t;
+    });
+  }
 
   ngOnInit(): void {
     this.refresh();
     this.createForm = this.formBuilder.group({
-      soat:[''],
-      fan:[''],
-      oqtuvchi:['']
+      id:[''],
+      soat: [''],
+      fan: [''],
+      oqtuvchi: ['']
     });
 
-
-}
-saqlash(){
-  const togaraklar = this.createForm.value;
-  this.http.post(this.url,togaraklar).subscribe(data => {
-    this.refresh();
-  });
+  }
+  saqlash() {
+    const togaraklar = this.createForm.value;
+    if(!this.tahrirlash){
+       this.http.post(this.url, togaraklar).subscribe(data => {
+      this.refresh();
+    });
+    }
+    else{
+      this.http.put(this.url , togaraklar).subscribe(date =>{
+      this.refresh();
+      });
+    }
   }
 
-  ochirish(id:number){
-    if(id){
-      this.http.delete(this.url+"/" + id).subscribe(date =>{
+  ochirish(id: number) {
+    if (id) {
+      this.http.delete(this.url + "/" + id).subscribe(date => {
         this.refresh();
       });
     }
   }
+    tahrirlashniBoshlash(togaraklar:any){
+      this.createForm.reset(togaraklar);
+      this.tahrirlash = true;
+
+    }
 }

@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="row">
 <div class="col-md-6 col-12">
@@ -18,15 +19,17 @@
                     <td>{{t.fan}}</td>
                     <td>{{t.oqtuvchi}}</td>
                     <td><button class="btn btn-danger" (click)="ochirish(t.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
-                    <td><button class="btn btn-primary" (click)="ochirish(t.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                    <td><button class="btn btn-primary" (click)="tahrirlashniBoshlash(t)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                 </tr>
             </tbody>
     </table>
 </div>
 <div class="col-md-6 col-12">
-
     <form  [formGroup]='createForm' (ngSubmit)="saqlash()">
-
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input formControlName='id' type="number"  id="id" class="form-control" readonly >
+      </div>
 <div class="form-group">
   <label for="soat">Soat</label>
   <input formControlName='soat' type="number"  id="soat" class="form-control" placeholder="Soat" >
@@ -50,3 +53,6 @@
 </div>
 </div>
 </div>
+
+
+

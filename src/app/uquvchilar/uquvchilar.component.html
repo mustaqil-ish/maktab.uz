@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="row">
 
@@ -23,7 +24,7 @@
         <td>{{o.yosh}}</td>
         <td>{{o.sinf}}</td>
         <td><button class="btn btn-danger" (click)="ochirish(o.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
-        <td><button class="btn btn-primary" (click)="ochirish(o.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
+        <td><button class="btn btn-primary" (click)="tahrirlashniBoshlash(o)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
       </tr> 
     </tbody>
 </table>
@@ -31,6 +32,11 @@
 <!-- Saqlash -->
 <div class="col-md-6  col-6">
 <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+<div class="form-group">
+  <label for="id">ID</label>
+  <input formControlName='id'  type="text"  id="id" class="form-control" readonly>
+</div>
+<br>
 <div class="form-group">
   <label for="ism">Ism</label>
   <input formControlName='ism'  type="text"  id="ism" class="form-control" placeholder="Ismni kiriting" >

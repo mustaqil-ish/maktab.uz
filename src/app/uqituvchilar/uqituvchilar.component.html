@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="row">
 <div class="col-md-6  col-12 ">
@@ -21,7 +22,7 @@
         <td>{{u.jins}}</td>     
        <td>{{u.maosh}}</td>  
       <td><button class="btn btn-danger" (click)="ochirish(u.id)"><i   class="fa fa-trash" aria-hidden="true"></i></button> </td>
-      <td><button class="btn btn-primary" (click)="ochirish(u.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
+      <td><button class="btn btn-primary" (click)="tahrirlashniBoshlash(u)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
         
       </tr>
     </tbody>
@@ -29,9 +30,13 @@
 </div>
 <div class="col-md-6 col-12 ">
   <form  [formGroup]='createForm' (ngSubmit)="saqlash()">
+    <div class="form-group">
+      <input  formControlName='id' type="text" id="id" class="form-control" readonly >
+      <br>
+      </div>
 <div class="form-group">
 <label for="ism">Ism</label>
-<input formControlName='ism' type="text" id="ism" class="form-control" placeholder="Ismni kiriting">
+<input  formControlName='ism' type="text" id="ism" class="form-control" placeholder="Ismni kiriting">
 <br>
 </div>
 <div class="form-group">
