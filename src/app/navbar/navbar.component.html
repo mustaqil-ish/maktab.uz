@@ -1,82 +1,81 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a id="icon" class="navbar-brand"><img src=""></a>
-  <a class="navbar-brand" routerLink="/boshSahifa"> Bosh Sahifa</a>
-  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavId">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="navbar-brand" routerLink="/oqituvchilar">O'qituvchilar <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-brand" routerLink="/oquvchilar">O'quvchilar</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-brand" routerLink="/xona">Xonalar</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-brand" routerLink="/togarak">To'garaklar</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-brand" routerLink="/info">Bog'lanish</a>
-      </li>
-    </ul>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav (click)="sidenav.toggle()">
 
-  </div>
-</nav>
+    <p class="menu-item-list">
+      <a routerLink="/boshSahifa">
+        <button mat-stroked-button style="width: 100%;">
+          <br>
+          <mat-icon style="font-size: 50px; color: rgb(255, 255, 255); margin-top: -57px; margin-left: -35px;">home
+          </mat-icon><span>
+          </span>
+        </button>
+      </a>
+
+    </p>
+    <p class="menu-item">
+      <a routerLink="/oqituvchilar">
+        <button mat-icon-button>
+          <mat-icon></mat-icon><span>O‘qituvchilarga</span>
+        </button>
+      </a>
+    </p>
+    <p class="menu-item">
+      <a routerLink="/oquvchilar">
+        <button mat-icon-button>
+          <mat-icon></mat-icon><span>O‘quvchilarga</span>
+        </button>
+      </a>
+    </p>
+    <p>
+    <p class="menu-item">
+      <a routerLink="/togarak">
+        <button mat-icon-button>
+          <mat-icon></mat-icon><span> To'garaklar</span>
+        </button>
+      </a>
+
+    </p>
+    <p class="menu-item">
+      <a routerLink="/xona">
+        <button mat-icon-button>
+          <mat-icon></mat-icon><span> Xonalar</span>
+        </button>
+      </a>
+    </p>
+
+    <p class="menu-item">
+      <a routerLink="/more">
+        <button mat-icon-button>
+          <mat-icon></mat-icon><span>More</span>
+        </button>
+      </a>
+    </p>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar class="fafaVirus" color="primary">
+      <button mat-button (click)="sidenav.open()" id="menu-button" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+     <a style="color: white; text-decoration: none;" routerLink="/boshSahifa"> <span >Maktab19.uz</span></a>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+
+        <mat-icon routerLink="/login">login</mat-icon>
+
+      </button>
+      <a style="color: white; text-decoration: none;" routerLink="/login"> <span>Login</span></a>
+    </mat-toolbar>
 
 
-<!-- navbar
 
-<nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
-
-  <a class="navbar-brand"><img src="https://static.kundalik.com/img/logotypes/uzlogotype.png"></a>
-
-  <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav">
-
-    <span class="navbar-toggler-icon"></span>
-
-  </button>
-
-  <div class="collapse navbar-collapse justify-content-between" id="nav">
-
-    <ul class="navbar-nav">
-
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/boshSahifa">BOSH SAHIFA</a>
-
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/oqituvchilar">O'QITUVCHILAR</a>
-
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/oquvchilar">O'QUVCHILAR</a>
-
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/xona">XONALAR</a>
-
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/togarak">TO'GARAKLAR</a>
-
-      </li>
-
-
-      <li class="nav-item">
-
-        <a class="nav-link text-light font-weight-bold px-3" routerLink="/info">BOG'LANISH</a>
-
-      </li>
-
-    </ul>
-  </div>
-</nav> -->
+    <div class="internal-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

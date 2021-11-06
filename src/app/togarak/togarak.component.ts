@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Togarak } from './togarak';
+import { TogarakService } from './togarak.service';
 
 @Component({
   selector: 'app-togarak',
@@ -8,53 +10,52 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./togarak.component.css']
 })
 export class TogarakComponent implements OnInit {
-
-  url = "http://localhost:8080/togaraklar";
   togaraklar: any;
   createForm: any;
   tahrirlash = false;
-
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private togarakService: TogarakService, public formBuilder: FormBuilder) { }
   refresh() {
-    this.http.get(this.url).subscribe(t => {
-      this.togaraklar = t;
-    });
+    this.togarakService.getAll()
+      .subscribe(t => {
+        this.togaraklar = t;
+      });
   }
 
   ngOnInit(): void {
     this.refresh();
     this.createForm = this.formBuilder.group({
-      id:[''],
+      id: [''],
       soat: [''],
       fan: [''],
       oqtuvchi: ['']
-    });
-
+    })
   }
   saqlash() {
     const togaraklar = this.createForm.value;
-    if(!this.tahrirlash){
-       this.http.post(this.url, togaraklar).subscribe(data => {
-      this.refresh();
-    });
+    if (!this.tahrirlash) {
+      this.togarakService.create(togaraklar).
+        subscribe(data => {
+          this.refresh();
+        });
     }
-    else{
-      this.http.put(this.url , togaraklar).subscribe(date =>{
-      this.refresh();
-      });
+    else {
+      this.togarakService.update(togaraklar)
+        .subscribe(date => {
+          this.refresh();
+        });
     }
+    this.tahrirlash = false;
   }
-
   ochirish(id: number) {
     if (id) {
-      this.http.delete(this.url + "/" + id).subscribe(date => {
+      this.togarakService.deleteById(id)
+      .subscribe(date => {
         this.refresh();
       });
     }
   }
-    tahrirlashniBoshlash(togaraklar:any){
-      this.createForm.reset(togaraklar);
-      this.tahrirlash = true;
-
-    }
+  tahrirlashniBoshlash(togaraklar: Togarak) {
+    this.createForm.reset(togaraklar);
+    this.tahrirlash = true;
+  }
 }

@@ -1,58 +1,72 @@
-
+<br><br>
 <div class="container">
-    <div class="row">
-    
+  <div class="row">
+
     <div class="col-md-6 col-12">
-    
-    <table class="table table-striped table-inverse table-responsive">
-      <thead class="thead-inverse">
-        <tr>
-          <th>ID</th>
-          <th>Sigim</th>
-          <th>Nom</th>
-          <th>Bino</th>
-          
-        </tr>
+
+      <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>ID</th>
+            <th>Sigim</th>
+            <th>Nom</th>
+            <th>Bino</th>
+
+          </tr>
         </thead>
         <tbody>
           <tr *ngFor="let x of xonalar">
             <td scope="row">{{x.id}}</td>
             <td>{{x.sigim}}</td>
             <td>{{x.nom}}</td>
-            <td>{{x.bino}}</td>       
-            <td><button class="btn btn-danger" (click)="ochirish(x.id)"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
-            <td><button class="btn btn-primary" (click)="tahrirlashniBoshlash(x)"><i class="fa fa-pencil" aria-hidden="true"></i></button> </td>
-          </tr> 
+            <td>{{x.bino}}</td>
+
+            <td><button mat-mini-fab color="primary" (click)="ochirish(x.id)">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+
+              <button  mat-mini-fab (click)="tahrirlashniBoshlash(x)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
     </div>
-    
-    
+
     <div class="col-md-6  col-12">
-    <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
-      <div class="form-group">
-        <label for="id">ID</label>
-        <input formControlName='id'  type="number"  id="id" class="form-control" readonly >
-      </div>
-    <div class="form-group">
-      <label for="sigim">Sigim</label>
-      <input formControlName='sigim'  type="number"  id="sigim" class="form-control" placeholder="Sigimni kiriting" >
+      <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+        <br><br>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>ID</mat-label>
+          <input matInput placeholder="ID" value="ID" readonly>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Sig'imi</mat-label>
+          <input type="number" matInput formControlName='sigim' matInput placeholder="Sig'imi">
+          <mat-hint>Sig'imi</mat-hint>
+        </mat-form-field>
+        <br>
+
+        <br>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName='nom' matInput placeholder="Nomini kiriting">
+          <mat-hint>Nomini kiriting</mat-hint>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Bino</mat-label>
+          <input matInput formControlName='bino' matInput placeholder="Binosi kiriting">
+          <mat-hint>Binosi</mat-hint>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary">Saqlash</button>
+        <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
+
+      </form>
     </div>
-    <br>
-    <div class="form-group">
-      <label for="nom">Nom</label>
-      <input formControlName='nom'  type="text"  id="nom" class="form-control" placeholder="Nomini kiriting" >
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="bino">Binosi</label>
-      <input formControlName='bino'  type="text"  id="bino" class="form-control" placeholder="Xona qaysi binoda joylashgan ?" >
-    </div>
-    <br>
-    <button  class="btn btn-success" value="saqlash">Saqlash</button>
-     <button id="btn1" type="reset" class="btn btn-secondary">Tozalash</button>
-    
-    </form>
-    </div>
-    </div>
-    </div>
+  </div>
+</div>

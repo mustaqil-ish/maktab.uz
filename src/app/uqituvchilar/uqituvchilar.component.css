@@ -1,4 +1,9 @@
-#btn1{
+*{
+  
+  box-sizing: border-box;
+}
+
+.btn1{
     margin-left: 10px;
 }
 table tr th {
@@ -16,3 +21,27 @@ table tr th {
    font-style: normal;
    font: normal;
 }
+
+.mat-radio-button ~ .mat-radio-button {  
+    margin-left: 16px;  
+  }  
+
+  .tp-button-row button,
+  .tp-button-row a {
+     margin-right: 8px;
+  }
+ 
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+
+
+ 
+  

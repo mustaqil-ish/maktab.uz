@@ -1,10 +1,11 @@
-export interface Uqituvchi {
+export interface Uquvchi {
 
     id: number;
     ism: String;
     familiya: String;
+    sharif: String;
     yosh: number;
-    jins: String;
-    maosh: number;
+    sinf: number;
+
 
 }

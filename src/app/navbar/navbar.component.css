@@ -1,18 +1,45 @@
 
-.nav-item a{
-    padding: 20px;
-    font-size: 16px;
-    
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+mat-sidenav {
+    width: 280px;
+    padding:15px;
+    background-color: #4e73df;
+    background-image: linear-gradient(
+180deg,#4e73df 10%,#224abe 100%);
+background-size: cover;
 }
-.navbar  a{
-    margin-left: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.menu-item{
+    border-bottom: 1px solid rgb(199, 182, 182);
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.main-content {
+    padding:20px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+@media only screen and(max-width: 500 px) {
+    .hide-on-small-screens {
+       display: none;
+    }
+ }
+ .fafaVirus{
+     box-shadow: 2px 2px 2px 2px rgb(185, 176, 176);
+ }
+
+.menu-item button  span {
+    color: rgb(255, 255, 255);
+    width: 100%; 
+   border: none;
+   font-family: Georgia;
+   font-size: 17px;
+   padding-left: 0;
+
+   font-weight: 350;
+   line-height: 2;
 }
 
-/* #icon img{
-    width: 30px;
-    height: 30px;
-   
-} */
+
+
+

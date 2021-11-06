@@ -1,9 +1,8 @@
 
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-
+import { FormBuilder, FormControl } from '@angular/forms';
+import { Uqituvchi } from './Uqituvchi';
+import { UqituvchilarService } from './uqituvchilar.service';
 @Component({
   selector: 'app-uqituvchilar',
   templateUrl: './uqituvchilar.component.html',
@@ -13,18 +12,14 @@ export class UqituvchilarComponent implements OnInit {
   uqituvchilar: any;
   createForm: any;
   tahrirlash = false;
-  url =  environment.baseUrl + "/uqituvchilar";
-  httpClient: any;
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
-
+  constructor(private uqituvchilarService: UqituvchilarService, public formBuilder: FormBuilder) { }
   refresh() {
-    this.http.get(this.url).subscribe(u => {
-      this.uqituvchilar = u;
-    });
+    this.uqituvchilarService.getAll()
+      .subscribe(u => {
+        this.uqituvchilar = u;
+      });
   }
-
   ngOnInit(): void {
-
     this.refresh();
     this.createForm = this.formBuilder.group({
       id: [''],
@@ -38,25 +33,27 @@ export class UqituvchilarComponent implements OnInit {
   saqlash() {
     const uqituvchilar = this.createForm.value;
     if (!this.tahrirlash) {
-      this.http.post(this.url, uqituvchilar).subscribe(data => {
-        this.refresh();
-      });
+      this.uqituvchilarService.create(uqituvchilar)
+        .subscribe(data => {
+          this.refresh();
+        });
     }
     else {
-      this.http.put(this.url, uqituvchilar).subscribe(data => {
-        this.refresh();
-        
-      });
+      this.uqituvchilarService.update(uqituvchilar)
+        .subscribe(data => {
+          this.refresh();
+        });
     }
   }
   ochirish(id: number) {
     if (id) {
-      this.http.delete(this.url + "/" + id).subscribe(data => {
-        this.refresh();
-      });
+      this.uqituvchilarService.deleteById(id)
+        .subscribe(data => {
+          this.refresh();
+        });
     }
   }
-  tahrirlashniBoshlash(uqituvchilar: any) {
+  tahrirlashniBoshlash(uqituvchilar: Uqituvchi) {
     this.createForm.reset(uqituvchilar)
     this.tahrirlash = true;
   }
