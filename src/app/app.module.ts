@@ -1,7 +1,6 @@
 
 import { NgModule } from '@angular/core';
-
-import { Router, RouterModule,Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UquvchilarComponent } from './uquvchilar/uquvchilar.component';
 import { UqituvchilarComponent } from './uqituvchilar/uqituvchilar.component';
@@ -22,42 +21,51 @@ import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth-interceptor';
 import { AuthGuard } from './core/auth.guard';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { UquvYiliComponent } from './uquv-yili/uquv-yili.component';
+import { DarsComponent } from './dars/dars.component';
+import { GuruhComponent } from './guruh/guruh.component';
 
 
-
-
- const routes:Routes=[
-{path:'',component:HomeComponent},
-{path:'login',component:LoginComponent},
-{path:'boshSahifa',component:HomeComponent},
-{path: 'oqituvchilar',component:UqituvchilarComponent,canActivate:[AuthGuard]},
-{path:'oquvchilar',component:UquvchilarComponent,canActivate:[AuthGuard]},
-{path:'xona',component:XonaComponent,canActivate:[AuthGuard]},
-{path:'togarak',component:TogarakComponent,canActivate:[AuthGuard]},
-{path:'info',component:InfoComponent,canActivate:[AuthGuard]},
-
-{  path:'**',component:PageNotFoundComponentComponent}
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'boshSahifa', component: HomeComponent },
+  { path: 'oqituvchilar', component: UqituvchilarComponent, canActivate: [AuthGuard] },
+  { path: 'oquvchilar', component: UquvchilarComponent, canActivate: [AuthGuard] },
+  { path: 'xona', component: XonaComponent, canActivate: [AuthGuard] },
+  { path: 'togarak', component: TogarakComponent, canActivate: [AuthGuard] },
+  { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
+  { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
+  { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
+  { path: 'guruh', component: GuruhComponent, canActivate: [AuthGuard] },
+  { path: '**', component: PageNotFoundComponentComponent }
 
 ];
 
-
 @NgModule({
   declarations: [
-  AppComponent,
-  UquvchilarComponent,
-  UqituvchilarComponent,
-  PageNotFoundComponentComponent,
-  XonaComponent,
-  TogarakComponent,
-  InfoComponent,
-  NavbarComponent,
-  HomeComponent,
-  LoginComponent,
+    AppComponent,
+    UquvchilarComponent,
+    UqituvchilarComponent,
+    PageNotFoundComponentComponent,
+    XonaComponent,
+    TogarakComponent,
+    InfoComponent,
+    NavbarComponent,
+    HomeComponent,
+    LoginComponent,
+    UquvYiliComponent,
+    DarsComponent,
+    GuruhComponent,
 
 
   ],
-
-
   imports: [
     RouterModule.forRoot(routes),
     MaterialModule,
@@ -67,37 +75,34 @@ import { AuthGuard } from './core/auth.guard';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    
-    
-    
-  
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+
   ],
 
 
-  exports:[
+  exports: [
     RouterModule
-    
-   
+
   ],
 
 
   providers: [
     {
-      
-      provide: HTTP_INTERCEPTORS, 
+
+      provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-       multi: true,
-    
+      multi: true,
+
     }
-    
-   
-   ],
+  ],
 
-
-  bootstrap: [AppComponent] 
+  bootstrap: [AppComponent]
 
 })
-
-
 
 export class AppModule { }

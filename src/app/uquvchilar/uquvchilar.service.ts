@@ -10,8 +10,10 @@ import { Uquvchi } from './uquvchi';
 })
 export class UquvchilarService {
   api = environment.baseUrl + "/api/uquvchilar";
+
   constructor(private http: HttpClient) { }
-  public  getAll(): Observable<Uquvchi> {
+
+  public getAll(): Observable<Uquvchi> {
     return this.http.get<Uquvchi>(this.api)
   }
   public create(uquvchilar: Uqituvchi): Observable<Uquvchi> {

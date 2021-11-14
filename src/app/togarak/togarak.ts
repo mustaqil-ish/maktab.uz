@@ -3,7 +3,7 @@
 export interface Togarak {
 
     id: number;
-    soat: number;
+    soat: Date;
     fan: string;
     oqtuvchi: string;
 

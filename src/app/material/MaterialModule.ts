@@ -15,7 +15,6 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ChartsModule, MDBBootstrapModule } from "angular-bootstrap-md";
 import { RoutingModule } from "../routing/routing.module";
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
@@ -36,24 +35,45 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CommonModule } from "@angular/common";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatDividerModule } from "@angular/material/divider";
 
 @NgModule({
     declarations: [],
 
-    imports: [
-        MDBBootstrapModule.forRoot(),
-        RoutingModule,
-        MatProgressBarModule,
+    imports: [ 
+        CommonModule,
+        MatNativeDateModule,
+        MatTableModule,
+        MatPaginatorModule,
         MatProgressSpinnerModule,
-        ChartsModule,
-        HttpClientModule,
-        LayoutModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatSnackBarModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatListModule,
+        MatNativeDateModule,
+        MatSortModule,
+        MatProgressBarModule,
         ReactiveFormsModule,
-        FormsModule
+        MatButtonToggleModule,
+        MatDividerModule
 
     ],
     exports: [
-        ChartsModule,
         HttpClientModule,
         LayoutModule,
         ReactiveFormsModule,
@@ -88,8 +108,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatTooltipModule,
         MatSnackBarModule,
         MatTableModule,
-        MatSortModule,
-        MatPaginatorModule
+       
+        MatPaginatorModule,
+       
 
 
     ]

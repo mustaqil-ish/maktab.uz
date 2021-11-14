@@ -11,17 +11,16 @@ export class UqituvchilarService {
   api = environment.baseUrl + "/api/uqituvchilar";
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Uqituvchi> {
-    return this.http.get<Uqituvchi>(this.api)
+  public getAll(): Observable<Uqituvchi[]> {
+    return this.http.get<Uqituvchi[]>(this.api)
   }
-  create(uqituvchilar: Uqituvchi): Observable<Uqituvchi> {
-    return this.http.post<Uqituvchi>(this.api, uqituvchilar)
+  public create(oqituvchilar: Uqituvchi): Observable<Uqituvchi> {
+    return this.http.post<Uqituvchi>(this.api, oqituvchilar)
   }
-
-  update(uqituvchilar: Uqituvchi): Observable<Uqituvchi> {
-    return this.http.put<Uqituvchi>(this.api, uqituvchilar)
+  public update(oqituvchilar: Uqituvchi): Observable<Uqituvchi> {
+    return this.http.put<Uqituvchi>(this.api, oqituvchilar)
   }
-  deleteById(id: number): Observable<any> {
+  public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id)
   }
 }

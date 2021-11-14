@@ -19,7 +19,7 @@ background-size: cover;
 .example-spacer {
     flex: 1 1 auto;
 }
-@media only screen and(max-width: 500 px) {
+@media only screen and(max-width: 500px) {
     .hide-on-small-screens {
        display: none;
     }
@@ -39,7 +39,6 @@ background-size: cover;
    font-weight: 350;
    line-height: 2;
 }
-
 
 
 

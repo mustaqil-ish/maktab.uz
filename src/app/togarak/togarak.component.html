@@ -3,51 +3,31 @@
   <div class="row">
     <div class="col-md-6 col-12">
 
-      <table class="table table-striped table-inverse table-responsive">
-        <thead class="thead-inverse">
-          <tr>
-            <th>ID</th>
-            <th>Soat</th>
-            <th>Fanlar</th>
-            <th>O'qituvchi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let t of togaraklar">
-            <td scope="row">{{t.id}}</td>
-            <td>{{t.soat}}</td>
-            <td>{{t.fan}}</td>
-            <td>{{t.oqtuvchi}}</td>
-            
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: red;">
+              + Qo'shish
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-
-
-              <td><button  mat-mini-fab  color="primary" (click)="ochirish(t.id)">
-                <mat-icon>delete_sweep</mat-icon>
-              </button>
-
-             <button  mat-mini-fab (click)="tahrirlashniBoshlash(t)">
-              <mat-icon  >edit</mat-icon>
-              </button></td>
-            
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <div class="col-md-6 col-12">
-      <form [formGroup]='createForm' (ngSubmit)="saqlash()">
+       <form [formGroup]='createForm' (ngSubmit)="saqlash()">
         <br><br>
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>ID</mat-label>
-          <input matInput placeholder="ID" value="ID" readonly>
+          <input matInput placeholder="ID" value="ID" disabled>
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Soat</mat-label>
-          <input type="number" matInput formControlName='soat' matInput placeholder="Soatni kiriting">
-          <mat-hint>Soatni kiriting</mat-hint>
+
+        <mat-form-field appearance="outline">
+          <mat-label>To'garakning boshlanish vaqti</mat-label>
+          <input formControlName='soat' matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
         <br>
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Fan</mat-label>
@@ -63,9 +43,36 @@
         <br>
         <button mat-raised-button color="primary">Saqlash</button>
         <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
-        <!-- The End -->
-
-      </form>
+      </form> 
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-md-6 col-12">
+      <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>ID</th>
+            <th>Soat</th>
+            <th>Fanlar</th>
+            <th>O'qituvchi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of togaraklar">
+            <td scope="row">{{t.id}}</td>
+            <td>{{t.soat}}</td>
+            <td>{{t.fan}}</td>
+            <td>{{t.oqtuvchi}}</td>      
+              <td><button  mat-mini-fab  color="primary" (click)="ochirish(t.id)">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+             <button  mat-mini-fab (click)="tahrirlashniBoshlash(t)">
+              <mat-icon  >edit</mat-icon>
+              </button></td>         
+          </tr>
+        </tbody>
+      </table>
+     
     </div>
   </div>
 </div>

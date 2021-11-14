@@ -2,6 +2,63 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-12">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: red;">
+              + Qo'shish
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+            <!-- <br><br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>ID</mat-label>
+              <input matInput placeholder="ID" value="ID">
+            </mat-form-field> -->
+
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Ism</mat-label>
+              <input matInput formControlName='ism' matInput placeholder="Ismni kiriting">
+              <mat-hint>Ismni kiriting</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Familiya</mat-label>
+              <input matInput formControlName='familiya' matInput placeholder="Familiya kiriting">
+              <mat-hint>Familiya kiriting</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Sharifi</mat-label>
+              <input matInput formControlName='sharif' matInput placeholder="Sharifi kiriting">
+              <mat-hint>Sharifi kiriting</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Yosh</mat-label>
+              <input type="number" matInput formControlName='yosh' matInput placeholder="Yosh kiriting">
+              <mat-hint>Yoshni kiriting</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Sinf</mat-label>
+              <input type="number" matInput formControlName='sinf' matInput placeholder="Sinifi kiriting">
+              <mat-hint>Sinifi kiriting</mat-hint>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary">Saqlash</button>
+            <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
+
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-md-6  col-6">
       <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
           <tr>
@@ -21,61 +78,17 @@
             <td>{{o.sharif}}</td>
             <td>{{o.yosh}}</td>
             <td>{{o.sinf}}</td>
-            <td><button  mat-mini-fab  color="primary" (click)="ochirish(o.id)">
-              <mat-icon>delete_sweep</mat-icon>
-            </button>
+            <td><button mat-mini-fab color="primary" (click)="ochirish(o.id)">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
 
-           <button  mat-mini-fab (click)="tahrirlashniBoshlash(o)">
-            <mat-icon>edit</mat-icon>
-            </button></td>
+              <button mat-mini-fab (click)="tahrirlashniBoshlash(o)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <!-- Saqlash -->
-    <div class="col-md-6  col-6">
-      <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
-        <br><br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>ID</mat-label>
-          <input matInput placeholder="ID" value="ID" >
-        </mat-form-field>
-
-        <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Ism</mat-label>
-          <input matInput formControlName='ism' matInput placeholder="Ismni kiriting">
-          <mat-hint>Ismni kiriting</mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Familiya</mat-label>
-          <input matInput formControlName='familiya' matInput placeholder="Familiya kiriting">
-          <mat-hint>Familiya kiriting</mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Sharifi</mat-label>
-          <input matInput formControlName='sharif' matInput placeholder="Sharifi kiriting">
-          <mat-hint>Sharifi kiriting</mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Yosh</mat-label>
-          <input type="number" matInput formControlName='yosh' matInput placeholder="Yosh kiriting">
-          <mat-hint>Yoshni kiriting</mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Sinf</mat-label>
-          <input type="number" matInput formControlName='sinf' matInput placeholder="Sinifi kiriting">
-          <mat-hint>Sinifi kiriting</mat-hint>
-        </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary">Saqlash</button>
-        <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
-
-      </form>
     </div>
   </div>
 </div>

@@ -12,6 +12,8 @@ export class UqituvchilarComponent implements OnInit {
   uqituvchilar: any;
   createForm: any;
   tahrirlash = false;
+
+
   constructor(private uqituvchilarService: UqituvchilarService, public formBuilder: FormBuilder) { }
   refresh() {
     this.uqituvchilarService.getAll()
