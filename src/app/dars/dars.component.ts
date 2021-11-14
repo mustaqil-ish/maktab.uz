@@ -25,7 +25,7 @@ export class DarsComponent implements OnInit {
     this.darsService.getAll()
       .subscribe(o => {
         this.uquvchilar = o;
-      });
+      })
   }
   ngOnInit(): void {
     this.oqituvchiService.getAll().subscribe(data=>{

@@ -29,7 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { UquvYiliComponent } from './uquv-yili/uquv-yili.component';
 import { DarsComponent } from './dars/dars.component';
-import { GuruhComponent } from './guruh/guruh.component';
+
 
 
 const routes: Routes = [
@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
   { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
   { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
-  { path: 'guruh', component: GuruhComponent, canActivate: [AuthGuard] },
+  // { path: 'guruh', component: GuruhComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponentComponent }
 
 ];
@@ -62,7 +62,7 @@ const routes: Routes = [
     LoginComponent,
     UquvYiliComponent,
     DarsComponent,
-    GuruhComponent,
+    
 
 
   ],
