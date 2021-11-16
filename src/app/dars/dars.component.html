@@ -51,11 +51,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let e of uquvchilar">
+          <tr *ngFor="let e of darslar">
             <td scope="row">{{e.id}}</td>
             <td>{{e.uqtuvchi.ism}} {{e.uqtuvchi.familiya}} </td>
             <td>{{e.guruh}}</td>
-            <td>{{e.uquvYili.boshlanganVaqt}} {{e.uquvYili.tugaganVaqt}}</td>
+            <td>{{e.uquvYili?.boshlanganVaqt}} {{e.uquvYili?.tugaganVaqt}}</td>
             <td>{{e.fan}}</td>
             <td>{{e.xona}}</td>
             <td><button  mat-mini-fab  color="primary" (click)="ochirish(e.id)">

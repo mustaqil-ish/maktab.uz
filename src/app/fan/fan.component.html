@@ -1,0 +1,64 @@
+<br><br>
+
+      <mat-accordion>
+        <mat-expansion-panel fullscreen>
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: red;">
+              + Qo'shish
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline" >
+              <mat-label>ID</mat-label>
+              <input formControlName='id'  matInput placeholder="ID" value="ID" readonly>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Fan nomi</mat-label>
+              <input matInput formControlName='nom' matInput placeholder="Fan nomini kirting">
+              <mat-hint>Fan nomini kirting</mat-hint>
+            </mat-form-field>
+            <br>
+
+            <button mat-raised-button color="primary">Saqlash</button>
+            <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
+
+          </form>
+
+
+       
+      
+        <table class="table table-striped table-inverse table-responsive">
+          <thead class="thead-inverse">
+            <tr>
+              <th>ID</th>
+              <th>Fan nomi</th>
+        
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of fanlar">
+              <td scope="row">{{f.id}}</td>
+              <td>{{f.nom}}</td>
+           
+              <td><button mat-mini-fab color="primary" (click)="ochirish(f.id)">
+                  <mat-icon>delete_sweep</mat-icon>
+                </button>
+  
+                <button mat-mini-fab (click)="tahrirlashniBoshlash(f)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
+ 
+</mat-expansion-panel>
+</mat-accordion>

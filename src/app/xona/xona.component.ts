@@ -16,8 +16,8 @@ export class XonaComponent implements OnInit {
   constructor(private xonalarService: XonaService, private formBuilder: FormBuilder) { }
   refresh() {
     this.xonalarService.getAll()
-      .subscribe(x => {
-        this.xonalar = x;
+      .subscribe((x:any) => {
+        this.xonalar = x.content;
       });
   }
   ngOnInit(): void {

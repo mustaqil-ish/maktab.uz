@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
 import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
-import { UquvYiliService } from '../uquv-yili/uquv-yili.service';
 import { UquvYili } from '../uquv-yili/uquvYili';
 import { Dars } from './dars';
 
@@ -15,27 +14,34 @@ import { DarsService } from './dars.service';
 })
 export class DarsComponent implements OnInit {
  
-  uquvchilar: any;
+  darslar: any;
   createForm: any;
   tahrirlash = false;
   uquvyili!:UquvYili[];
   oqituvchilar!: Uqituvchi[];
   constructor(private darsService: DarsService, private oqituvchiService: UqituvchilarService, private formBuilder: FormBuilder) { }
   refresh() {
+    
     this.darsService.getAll()
-      .subscribe(o => {
-        this.uquvchilar = o;
+      .subscribe((o:any) => {
+        this.darslar = o.content;
+        
       })
+       
   }
+ 
+      
+      
+      
+  
   ngOnInit(): void {
-    this.oqituvchiService.getAll().subscribe(data=>{
-      this.oqituvchilar = data;
+    this.oqituvchiService.getAll().subscribe((data:any)=>{
+      this.oqituvchilar = data.content;
     })
     this.refresh();
     this.createForm = this.formBuilder.group({
       uqtuvchi: [''],
-      uquvYili:[''],
-
+     
       
     });
   }
@@ -62,8 +68,8 @@ export class DarsComponent implements OnInit {
         });
     }
   }
-  tahrirlashniBoshlash(uquvchilar: Dars) {
-    this.createForm.reset(uquvchilar)
+  tahrirlashniBoshlash(darslar: Dars) {
+    this.createForm.reset(darslar)
     this.tahrirlash = true;
   }
 

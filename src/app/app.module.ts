@@ -18,7 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './login/login.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth-interceptor';
 import { AuthGuard } from './core/auth.guard';
 import { MatTableModule } from '@angular/material/table';
@@ -29,8 +29,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { UquvYiliComponent } from './uquv-yili/uquv-yili.component';
 import { DarsComponent } from './dars/dars.component';
-
-
+import { FanComponent } from './fan/fan.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
   { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
   { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
+  { path: 'fan', component: FanComponent, canActivate: [AuthGuard] },
   // { path: 'guruh', component: GuruhComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponentComponent }
 
@@ -62,6 +65,9 @@ const routes: Routes = [
     LoginComponent,
     UquvYiliComponent,
     DarsComponent,
+    FanComponent,
+    
+    
     
 
 
@@ -81,6 +87,11 @@ const routes: Routes = [
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+
 
   ],
 
@@ -98,7 +109,8 @@ const routes: Routes = [
       useClass: AuthInterceptor,
       multi: true,
 
-    }
+    },
+   
   ],
 
   bootstrap: [AppComponent]

@@ -16,8 +16,8 @@ export class UquvYiliComponent implements OnInit {
   constructor(private UquvYiliService: UquvYiliService, private formBuilder: FormBuilder) { }
   refresh() {
     this.UquvYiliService.getAll()
-      .subscribe(uq => {
-        this.uquv = uq;
+      .subscribe((uq:any) => {
+        this.uquv = uq.content;
       });
   }
   ngOnInit(): void {

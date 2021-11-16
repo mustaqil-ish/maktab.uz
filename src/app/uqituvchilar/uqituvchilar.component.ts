@@ -17,8 +17,8 @@ export class UqituvchilarComponent implements OnInit {
   constructor(private uqituvchilarService: UqituvchilarService, public formBuilder: FormBuilder) { }
   refresh() {
     this.uqituvchilarService.getAll()
-      .subscribe(u => {
-        this.uqituvchilar = u;
+      .subscribe((u:any) => {
+        this.uqituvchilar = u.content;
       });
   }
   ngOnInit(): void {

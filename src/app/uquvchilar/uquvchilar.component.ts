@@ -14,8 +14,8 @@ export class UquvchilarComponent implements OnInit {
   constructor(private uquvchilarService: UquvchilarService, private formBuilder: FormBuilder) { }
   refresh() {
     this.uquvchilarService.getAll()
-      .subscribe(o => {
-        this.uquvchilar = o;
+      .subscribe((o:any) => {
+        this.uquvchilar = o.content;
       });
   }
   ngOnInit(): void {

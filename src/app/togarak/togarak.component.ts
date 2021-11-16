@@ -16,8 +16,8 @@ export class TogarakComponent implements OnInit {
   constructor(private togarakService: TogarakService, public formBuilder: FormBuilder) { }
   refresh() {
     this.togarakService.getAll()
-      .subscribe(t => {
-        this.togaraklar = t;
+      .subscribe((t:any) => {
+        this.togaraklar = t.content;
       });
   }
 
@@ -31,6 +31,8 @@ export class TogarakComponent implements OnInit {
     })
   }
   saqlash() {
+   
+    
     const togaraklar = this.createForm.value;
     if (!this.tahrirlash) {
       this.togarakService.create(togaraklar).
