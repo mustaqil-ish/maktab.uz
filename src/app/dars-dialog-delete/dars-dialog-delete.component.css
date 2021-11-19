@@ -1,0 +1,15 @@
+.buttons button{
+    background-color: rgb(72, 72, 192);
+    color: white;
+    width: 70px;
+    height: 40px;
+    margin: 40px;
+    border: none;
+    border-radius: 7px;
+    
+}
+.buttons {
+    display: flex;
+    
+   
+}

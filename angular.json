@@ -15,6 +15,9 @@
       
 
       "styles": [
+
+        "node_modules/slick-carousel/slick/slick.scss",
+    "node_modules/slick-carousel/slick/slick-theme.scss",
         "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
         "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
         "node_modules/animate.css/animate.css",
@@ -30,7 +33,9 @@
 ],
 "scripts": [
   "node_modules/chart.js/dist/Chart.js",
-  "node_modules/hammerjs/hammer.min.js"
+  "node_modules/hammerjs/hammer.min.js",
+  "node_modules/jquery/dist/jquery.min.js",
+  "node_modules/slick-carousel/slick/slick.min.js"
 ],
 
 
@@ -53,7 +58,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/theme.less",

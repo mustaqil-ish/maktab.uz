@@ -1,6 +1,5 @@
 
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UquvchilarComponent } from './uquvchilar/uquvchilar.component';
 import { UqituvchilarComponent } from './uqituvchilar/uqituvchilar.component';
@@ -9,47 +8,30 @@ import { XonaComponent } from './xona/xona.component';
 import { TogarakComponent } from './togarak/togarak.component';
 import { InfoComponent } from './info/info.component';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MaterialModule } from './material/MaterialModule';
+import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth-interceptor';
-import { AuthGuard } from './core/auth.guard';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
 import { UquvYiliComponent } from './uquv-yili/uquv-yili.component';
 import { DarsComponent } from './dars/dars.component';
 import { FanComponent } from './fan/fan.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SinfxonaComponent } from './sinfxona/sinfxona.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatDeleteDialogSinifxonaComponent } from './mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
+import { MatDeleteDialogOqtuvchiComponent } from './mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
+import { DarsDialogDeleteComponent } from './dars-dialog-delete/dars-dialog-delete.component';
+registerLocaleData(en);
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'boshSahifa', component: HomeComponent },
-  { path: 'oqituvchilar', component: UqituvchilarComponent, canActivate: [AuthGuard] },
-  { path: 'oquvchilar', component: UquvchilarComponent, canActivate: [AuthGuard] },
-  { path: 'xona', component: XonaComponent, canActivate: [AuthGuard] },
-  { path: 'togarak', component: TogarakComponent, canActivate: [AuthGuard] },
-  { path: 'info', component: InfoComponent, canActivate: [AuthGuard] },
-  { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
-  { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
-  { path: 'fan', component: FanComponent, canActivate: [AuthGuard] },
-  // { path: 'guruh', component: GuruhComponent, canActivate: [AuthGuard] },
-  { path: '**', component: PageNotFoundComponentComponent }
 
-];
+
+
 
 @NgModule({
   declarations: [
@@ -60,47 +42,33 @@ const routes: Routes = [
     XonaComponent,
     TogarakComponent,
     InfoComponent,
-    NavbarComponent,
     HomeComponent,
     LoginComponent,
     UquvYiliComponent,
     DarsComponent,
     FanComponent,
-    
-    
-    
+    NavbarComponent,
+    SinfxonaComponent,
+    MatDeleteDialogSinifxonaComponent,
+    MatDeleteDialogOqtuvchiComponent,
+    DarsDialogDeleteComponent
+
+
+
 
 
   ],
   imports: [
-    RouterModule.forRoot(routes),
     MaterialModule,
+    BrowserModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-
-
+   
   ],
-
-
-  exports: [
-    RouterModule
-
-  ],
-
 
   providers: [
     {
@@ -110,7 +78,8 @@ const routes: Routes = [
       multi: true,
 
     },
-   
+
+
   ],
 
   bootstrap: [AppComponent]

@@ -1,8 +1,4 @@
-<br><br>
-<div class="container">
-  <div class="row">
-    <div class="col-xl-6 col-12">
-      <!--  -->
+<!-- 
       <mat-accordion>
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
@@ -15,10 +11,10 @@
           </mat-expansion-panel-header>
           <form class="example-form" [formGroup]='createForm' (ngSubmit)="saqlash()">
 
-            <!-- <mat-form-field class="example-full-width" appearance="outline">
+            <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>ID</mat-label>
               <input matInput placeholder="ID" value="ID" readonly>
-            </mat-form-field> -->
+            </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Ism</mat-label>
@@ -56,8 +52,8 @@
           </form>
         </mat-expansion-panel>
       </mat-accordion>
-    </div>
-    <div class="col-xl-6  col-6 ">
+
+  
       <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
           <tr>
@@ -89,6 +85,126 @@
           </tr>
         </tbody>
       </table>
+
+    -->
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Sinflar</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+          <mat-expansion-panel [hideToggle]="false">
+            <mat-expansion-panel-header>Yangi sinf qo'shish</mat-expansion-panel-header>
+    
+            <form [formGroup]="forma" (ngSubmit)="saqlash()">
+              <mat-form-field appearance="outline">
+                <mat-label>id</mat-label>
+                <input formControlName="id" matInput placeholder="id">
+                <mat-hint>ID</mat-hint>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Ism</mat-label>
+                <input formControlName="ism" matInput placeholder="Ism">
+                <mat-hint>Ismni kiriting</mat-hint>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Familiya</mat-label>
+                <input formControlName="familiya" matInput placeholder="Familiya">
+                <mat-hint>Familiyani kiriting</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Yoshi</mat-label>
+                <input type="number" formControlName="yosh" matInput placeholder="Yosh">
+                <mat-hint>Yoshni kiriting</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Oylik</mat-label>
+                <input type="number" formControlName="maosh" matInput placeholder="oylik">
+                <mat-hint>Maoshni kiriting</mat-hint>
+              </mat-form-field>
+
+              <!-- <mat-radio-group aria-label="Select an option">
+                <mat-radio-button  value="1">Option 1</mat-radio-button>
+                <mat-radio-button  value="2">Option 2</mat-radio-button>
+              </mat-radio-group> -->
+
+
+              <button mat-raised-button color="primary">
+                <mat-icon>
+                  qo'shish
+                </mat-icon>
+                Saqlash
+              </button>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+    
+    
+    <div class="example-container mat-elevation-z8">
+      <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+          Ma'lumot kelishining imkoni bo'lmadi
+        </div>
+      </div>
+      <div class="example-table-container">
+        <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="id" matSortDisableClear
+          matSortDirection="desc">
+    
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="ism">
+            <th mat-header-cell *matHeaderCellDef>Sinf nomi</th>
+            <td mat-cell *matCellDef="let row">{{row.ism}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="familiya">
+            <th mat-header-cell *matHeaderCellDef>Boshlangan vaqt</th>
+            <td mat-cell *matCellDef="let row">{{row.familiya}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="yosh">
+            <th mat-header-cell *matHeaderCellDef>Boshlangan vaqt</th>
+            <td mat-cell *matCellDef="let row">{{row.yosh}}</td>
+          </ng-container>
+
+             <ng-container matColumnDef="maosh">
+            <th mat-header-cell *matHeaderCellDef>Boshlangan vaqt</th>
+            <td mat-cell *matCellDef="let row">{{row.maosh}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="jins">
+            <th mat-header-cell *matHeaderCellDef>Boshlangan vaqt</th>
+            <td mat-cell *matCellDef="let row">{{row.jins}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="amal">
+            <th mat-header-cell *matHeaderCellDef>Amal</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-mini-fab color="primary" (click)="edit(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" (click)="delete(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    
+      <mat-paginator [length]="resultsLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Paginator">
+      </mat-paginator>
     </div>
-  </div>
-</div>
