@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FanDeleteDialogComponent } from './Dialog/fan-delete-dialog/fan-delete-dialog.component';
 import { Fan } from './fan';
 
 @Injectable({
@@ -10,10 +12,21 @@ import { Fan } from './fan';
 export class FanService {
   api = environment.baseUrl + "/api/fan";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private dialog: MatDialog) { }
 
-  public getAll(): Observable<Fan> {
-    return this.http.get<Fan>(this.api)
+  openConfirmDialog(msg : any){
+    return this.dialog.open(
+      FanDeleteDialogComponent,{
+        width: "350px",
+        height: "200px",
+        data : {
+          massage : msg
+        }
+      });
+  }
+
+  getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
   }
   public create(fanlar: Fan): Observable<Fan> {
     return this.http.post<Fan>(this.api, fanlar)

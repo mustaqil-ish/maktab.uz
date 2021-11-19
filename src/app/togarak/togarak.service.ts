@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Togarak } from './togarak';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogTograkComponent } from '../fan/Dialog/delete-dialog-tograk/delete-dialog-tograk.component';
 
 
 @Injectable({
@@ -10,10 +12,22 @@ import { environment } from 'src/environments/environment';
 })
 export class TogarakService {
   api = environment.baseUrl + "/api/togaraklar";
-  constructor(private http: HttpClient) { }
+   
+  constructor(private http: HttpClient,private dialog: MatDialog) { }
 
-  public getAll(): Observable<Togarak> {
-    return this.http.get<Togarak>(this.api);
+  openConfirmDialog(msg : any){
+    return this.dialog.open(
+      DeleteDialogTograkComponent,{
+        width: "350px",
+        height: "200px",
+        data : {
+          massage : msg
+        }
+      });
+  }
+
+  public getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
   }
 
   public create(togaraklar: Togarak): Observable<Togarak> {

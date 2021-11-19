@@ -11,8 +11,9 @@ export class UquvYiliService {
   api = environment.baseUrl + "/api/uquvYili";
 
   constructor(private http:HttpClient) { }
-  getAll(): Observable<UquvYili[]> {
-    return this.http.get<UquvYili[]>(this.api)
+  
+  getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
   }
   create(uquvYillari: UquvYili): Observable<UquvYili> {
     return this.http.post<UquvYili>(this.api, uquvYillari)

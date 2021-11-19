@@ -1,67 +1,3 @@
-<!-- <br><br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-12">
-    
- <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
-        <br>
-        <mat-form-field appearance="outline">
-            <mat-label>O'qituvchilar</mat-label>
-            <mat-select matInput formControlName='uqtuvchi'>
-              <mat-option *ngFor="let o of oqituvchilar" [value]="o">
-                {{o.ism + ' ' + o.familiya}}
-              </mat-option>
-            </mat-select>
-            
-            <mat-hint>O'qituvchini tanlang</mat-hint>
-          </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary">Saqlash</button>
-        <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
-
-      </form>
-
-    </div>
-
-    <div class="col-md-6  col-6">
-      <table class="table table-striped table-inverse table-responsive">
-        <thead class="thead-inverse">
-          <tr>
-            <th>ID</th>
-            <th>O'qituvchi</th>
-            <th>Sinf</th>
-            <th>O'quv yili</th>
-            <th>Fan</th>
-            <th>Xona</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let e of darslar">
-            <td scope="row">{{e.id}}</td>
-            <td>{{e.uqtuvchi.ism}} {{e.uqtuvchi.familiya}} </td>
-            <td>{{e.sinf}}</td>
-            <td>{{e.uquvYili?.boshlanganVaqt}} {{e.uquvYili?.tugaganVaqt}}</td>
-            <td>{{e.fan}}</td>
-            <td>{{e.xona}}</td>
-            <td><button  mat-mini-fab  color="primary" (click)="ochirish(e.id)">
-              <mat-icon>delete_sweep</mat-icon>
-            </button>
-
-           <button  mat-mini-fab (click)="tahrirlashniBoshlash(e)">
-            <mat-icon>edit</mat-icon>
-            </button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-
-
 
 <mat-card>
   <mat-card-header>
@@ -116,7 +52,7 @@
       matSortDirection="desc">
 
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">ID</th>
         <td mat-cell *matCellDef="let row">{{row.id}}</td>
       </ng-container>
 

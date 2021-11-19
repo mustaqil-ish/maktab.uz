@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { XonaDeleteDialogComponent } from '../fan/Dialog/xona-delete-dialog/xona-delete-dialog.component';
 import { Xona } from './xona';
 
 @Injectable({
@@ -10,10 +12,22 @@ import { Xona } from './xona';
 export class XonaService {
   api = environment.baseUrl + "/api/xona"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private dialog: MatDialog) { }
 
-  public getAll(): Observable<Xona> {
-    return this.http.get<Xona>(this.api)
+  openConfirmDialog(msg : any){
+    return this.dialog.open(
+      XonaDeleteDialogComponent,{
+        width: "350px",
+        height: "200px",
+        data : {
+          massage : msg
+        }
+      });
+  }
+
+
+  public getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
   }
   public create(xonalar: Xona): Observable<Xona> {
     return this.http.post<Xona>(this.api, xonalar)

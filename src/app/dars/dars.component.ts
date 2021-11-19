@@ -84,7 +84,8 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private darsService: DarsService, private oqtuvchiService:UqituvchilarService,
+  constructor(private darsService: DarsService,
+    private uqituvchiService: UqituvchilarService, 
     public fb: FormBuilder) { }
   ngOnInit(): void {
     this.forma = this.fb.group({
@@ -94,8 +95,9 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   }
 
   ngAfterViewInit() {
-
-    // If the user changes the sort order, reset back to the first page.
+    this.uqituvchiService.getAll(null).subscribe(data=>{
+      this.oqituvchilar = data.content;
+    })
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
@@ -114,17 +116,12 @@ export class DarsComponent implements OnInit ,AfterViewInit {
             .pipe(catchError(() => of(null)));
         }),
         map((data: any) => {
-          // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
 
           if (data === null) {
             return [];
           }
-
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
 
           this.resultsLength = data.totalElements;
           return data.content;

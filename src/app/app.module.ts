@@ -27,6 +27,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatDeleteDialogSinifxonaComponent } from './fan/Dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
 import { MatDeleteDialogOqtuvchiComponent } from './fan/Dialog/mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
 import { MatDeleteUquchiComponent } from './fan/Dialog/mat-delete-uquchi/mat-delete-uquchi.component';
+import { DeleteDialogTograkComponent } from './fan/Dialog/delete-dialog-tograk/delete-dialog-tograk.component';
+import { XonaDeleteDialogComponent } from './fan/Dialog/xona-delete-dialog/xona-delete-dialog.component';
+import { FanDeleteDialogComponent } from './fan/Dialog/fan-delete-dialog/fan-delete-dialog.component';
 
 registerLocaleData(en);
 
@@ -53,6 +56,9 @@ registerLocaleData(en);
     MatDeleteDialogSinifxonaComponent,
     MatDeleteDialogOqtuvchiComponent,
     MatDeleteUquchiComponent,
+    DeleteDialogTograkComponent,
+    XonaDeleteDialogComponent,
+    FanDeleteDialogComponent,
     
     
 

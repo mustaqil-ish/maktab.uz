@@ -1,92 +1,105 @@
-<br><br>
-<div class="container">
-  <div class="row">
-   <div class="col-md-6 col-12"> 
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>O'quv yili</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+      <mat-expansion-panel [hideToggle]="false">
+        <mat-expansion-panel-header>O'quv yili</mat-expansion-panel-header>
 
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              + Qo'shish
-            </mat-panel-title>
-            <mat-panel-description>
-              
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+        <form [formGroup]="forma" (ngSubmit)="saqlash()">
+          <mat-form-field appearance="outline">
+            <mat-label>id</mat-label>
+            <input matInput placeholder="id">
+            <mat-hint>id</mat-hint>
+          </mat-form-field>
 
+          <mat-form-field appearance="fill">
+            <mat-label>Boshlangan o'quv yili</mat-label>
+            <input formControlName='boshlanganVaqt' matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
+          <mat-form-field appearance="fill">
+            <mat-label>Yakuniy o'quv yili</mat-label>
+            <input matInput formControlName='tugaganVaqt' [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
 
-          <form [formGroup]='createForm' (ngSubmit)='saqlash()'>
-            <br><br>
-            <!-- <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>ID</mat-label>
-            <input matInput placeholder='ID'   value="ID">
-          </mat-form-field> -->
-
-
-            <mat-form-field appearance="fill">
-              <mat-label>Boshlangan o'quv yili</mat-label>
-              <input formControlName='boshlanganVaqt' matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Izoh qoldiring
+              </mat-label>
+              <textarea matInput formControlName='izoh' maxlength="8"
+                placeholder="8 ta belgidan ko'p bo'lmagan izoh yozing"></textarea>
             </mat-form-field>
+          </div>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Yakuniy o'quv yili</mat-label>
-              <input matInput formControlName='tugaganVaqt' [matDatepicker]="picker1">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
+          <button mat-raised-button color="primary">
+            <mat-icon>
+              qo'shish
+            </mat-icon>
+            Saqlash
+          </button>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
 
-            <div class="example-form">
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Izoh qoldiring
-                </mat-label>
-                <textarea matInput maxlength="8" formControlName='izoh'
-                  placeholder="8 ta belgidan ko'p bo'lmagan izoh yozing"></textarea>
-              </mat-form-field>
-            </div>
-            <br>
-            <button mat-raised-button color="primary">Saqlash</button>
-            <button type="reset" id="btn1" mat-raised-button color="warn">Tozalash</button>
-          </form>
-        </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        
-        
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div> 
-  <div class="col-md-6  col-12"> 
-      <table class="table table-striped table-inverse table-responsive">
-        <thead class="thead-inverse">
-          <tr>
-            <!-- <th>ID</th> -->
-            <th>Boshlangan vaqt</th>
-            <th>Tugagan vaqt</th>
-            <th>Izoh</th>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      Ma'lumot kelishining imkoni bo'lmadi
+    </div>
+  </div>
+  <div class="example-table-container">
+    <table   mat-table [dataSource]="data" class="example-table" matSort matSortActive="Id" matSortDisableClear
+      matSortDirection="desc">
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let uq of uquv">
-            <!-- <td scope="row">{{uq.id}}</td> -->
-            <td>{{uq.boshlanganVaqt}}</td>
-            <td>{{uq.tugaganVaqt}}</td>
-            <td>{{uq.izoh}}</td>
 
-            <td><button mat-mini-fab color="primary" (click)="ochirish(uq.id)">
-                <mat-icon>delete_sweep</mat-icon>
-              </button>
 
-              <button mat-mini-fab (click)="tahrirlashniBoshlash(uq)">
-                <mat-icon>edit</mat-icon>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-     </div>
- 
- </div> 
- </div> 
+      
+      <ng-container matColumnDef="id">
+        <th mat-sort-header sortActionDescription="Sort by number" mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="boshlanganVaqt">
+        <th mat-header-cell *matHeaderCellDef>Boshlangan o'quv yili</th>
+        <td mat-cell *matCellDef="let row">{{row.boshlanganVaqt}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tugaganVaqt">
+        <th mat-header-cell *matHeaderCellDef>Tugagan o'quv yili</th>
+        <td mat-cell *matCellDef="let row">{{row.tugaganVaqt}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="izoh">
+        <th mat-header-cell *matHeaderCellDef>izoh</th>
+        <td mat-cell *matCellDef="let row">{{row.izoh}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amal">
+        <th mat-header-cell *matHeaderCellDef>Amal</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-mini-fab color="primary" (click)="edit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" (click)="delete(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Paginator">
+  </mat-paginator>
+</div>
