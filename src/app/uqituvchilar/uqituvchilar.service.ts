@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MatDeleteDialogOqtuvchiComponent } from '../mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
+import { MatDeleteDialogOqtuvchiComponent } from '../fan/Dialog/mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
 import { Uqituvchi } from './Uqituvchi';
 
 @Injectable({

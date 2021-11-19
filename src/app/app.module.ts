@@ -24,9 +24,10 @@ import en from '@angular/common/locales/en';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SinfxonaComponent } from './sinfxona/sinfxona.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatDeleteDialogSinifxonaComponent } from './mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
-import { MatDeleteDialogOqtuvchiComponent } from './mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
-import { DarsDialogDeleteComponent } from './dars-dialog-delete/dars-dialog-delete.component';
+import { MatDeleteDialogSinifxonaComponent } from './fan/Dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
+import { MatDeleteDialogOqtuvchiComponent } from './fan/Dialog/mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
+import { MatDeleteUquchiComponent } from './fan/Dialog/mat-delete-uquchi/mat-delete-uquchi.component';
+
 registerLocaleData(en);
 
 
@@ -51,7 +52,9 @@ registerLocaleData(en);
     SinfxonaComponent,
     MatDeleteDialogSinifxonaComponent,
     MatDeleteDialogOqtuvchiComponent,
-    DarsDialogDeleteComponent
+    MatDeleteUquchiComponent,
+    
+    
 
 
 

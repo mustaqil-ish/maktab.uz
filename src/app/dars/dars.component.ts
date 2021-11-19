@@ -84,7 +84,7 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private darsService: DarsService, private oqtuvchiService:UqituvchilarService ,
+  constructor(private darsService: DarsService, private oqtuvchiService:UqituvchilarService,
     public fb: FormBuilder) { }
   ngOnInit(): void {
     this.forma = this.fb.group({

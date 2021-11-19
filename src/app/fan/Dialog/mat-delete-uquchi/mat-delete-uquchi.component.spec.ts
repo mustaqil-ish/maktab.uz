@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DarsDialogDeleteComponent } from './dars-dialog-delete.component';
+import { MatDeleteUquchiComponent } from './mat-delete-uquchi.component';
 
-describe('DarsDialogDeleteComponent', () => {
-  let component: DarsDialogDeleteComponent;
-  let fixture: ComponentFixture<DarsDialogDeleteComponent>;
+describe('MatDeleteUquchiComponent', () => {
+  let component: MatDeleteUquchiComponent;
+  let fixture: ComponentFixture<MatDeleteUquchiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DarsDialogDeleteComponent ]
+      declarations: [ MatDeleteUquchiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DarsDialogDeleteComponent);
+    fixture = TestBed.createComponent(MatDeleteUquchiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MatDeleteDialogSinifxonaComponent } from '../mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
+import { MatDeleteDialogSinifxonaComponent } from '../fan/Dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
 import { Sinf } from './sinfxona';
 
 @Injectable({

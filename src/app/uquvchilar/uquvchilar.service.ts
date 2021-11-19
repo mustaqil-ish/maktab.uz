@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
+import { MatDeleteUquchiComponent } from '../fan/Dialog/mat-delete-uquchi/mat-delete-uquchi.component';
 import { Uquvchi } from './uquvchi';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,23 @@ import { Uquvchi } from './uquvchi';
 export class UquvchilarService {
   api = environment.baseUrl + "/api/uquvchilar";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient ,private dialog:MatDialog) { }
 
-  public getAll(): Observable<Uquvchi> {
-    return this.http.get<Uquvchi>(this.api)
+  openConfirmDialog(msg : any){
+    return this.dialog.open(
+      MatDeleteUquchiComponent,{
+        width: "350px",
+        height: "200px",
+        data : {
+          massage : msg
+        }
+      });
   }
-  public create(uquvchilar: Uqituvchi): Observable<Uquvchi> {
+
+  getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
+  }
+  public create(uquvchilar: Uquvchi): Observable<Uquvchi> {
     return this.http.post<Uquvchi>(this.api, uquvchilar)
   }
   public update(uquvchilar: Uquvchi): Observable<Uquvchi> {
@@ -26,3 +39,5 @@ export class UquvchilarService {
     return this.http.delete(this.api + "/" + id)
   }
 }
+
+
