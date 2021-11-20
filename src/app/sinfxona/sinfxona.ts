@@ -1,4 +1,4 @@
-export interface Sinf {
+export interface Sinfxona {
 
     id:number;
     nom:string;

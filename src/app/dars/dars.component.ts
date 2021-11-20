@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Sinfxona } from '../sinfxona/sinfxona';
+import { SinfxonaService } from '../sinfxona/sinfxona.service';
 import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
 import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
 import { UquvYili } from '../uquv-yili/uquvYili';
@@ -16,64 +18,15 @@ import { DarsService } from './dars.service';
 })
 export class DarsComponent implements OnInit ,AfterViewInit {
  
+  
   darslar: any;
   createForm: any;
   tahrirlash = false;
   uquvyili!:UquvYili[];
   oqituvchilar!: Uqituvchi[];
+  sinflar!:Sinfxona[];
 
-  // refresh() {
-    
-  //   this.darsService.getAll()
-  //     .subscribe((o:any) => {
-  //       this.darslar = o.content;
-        
-  //     })
-       
-  // }
- 
-      
-  // ngOnInit(): void {
-  //   this.oqituvchiService.getAll().subscribe((data:any)=>{
-  //     this.oqituvchilar = data.content;
-  //   })
-
-  //   this.refresh();
-  //   this.createForm = this.formBuilder.group({
-  //     uqtuvchi: [''],
-     
-  //   });
-  // }
-  // saqlash() {
-  //   const oqituvchilar = this.createForm.value;
-  //   if (!this.tahrirlash) {
-  //     this.darsService.create(oqituvchilar)
-  //       .subscribe(data => {
-  //         this.refresh();
-  //       });
-  //   }
-  //   else {
-  //     this.darsService.update(oqituvchilar)
-  //       .subscribe(data => {
-  //         this.refresh();
-  //       });
-  //   }
-  // }
-  // ochirish(id: number) {
-  //   if (id) {
-  //     this.darsService.deleteById(id)
-  //       .subscribe(data => {
-  //         this.refresh();
-  //       });
-  //   }
-  // }
-  // tahrirlashniBoshlash(darslar: Dars) {
-  //   this.createForm.reset(darslar)
-  //   this.tahrirlash = true;
-  // }
-
-
-  displayedColumns: string[] = ['id', 'uqtuvchi', 'amal'];
+  displayedColumns: string[] = ['id', 'uqtuvchi', 'sinfxona' ,'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -85,11 +38,13 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private darsService: DarsService,
-    private uqituvchiService: UqituvchilarService, 
+    private uqituvchiService: UqituvchilarService,
+     private sinfService:SinfxonaService, 
     public fb: FormBuilder) { }
   ngOnInit(): void {
     this.forma = this.fb.group({
       uqtuvchi: [''],
+      sinfxona:[''],
     
     })
   }
@@ -97,6 +52,12 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   ngAfterViewInit() {
     this.uqituvchiService.getAll(null).subscribe(data=>{
       this.oqituvchilar = data.content;
+      // 
+    
+    });
+    this.sinfService.getAll(null).subscribe((data:any) =>{
+      this.sinflar = data.content;
+      console.log(this.sinflar[0].nom);
     })
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)

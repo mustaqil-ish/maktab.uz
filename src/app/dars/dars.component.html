@@ -12,11 +12,14 @@
 
           <mat-form-field appearance="outline">
             <mat-label>id</mat-label>
-            <input  matInput placeholder="id">
+            <input  matInput placeholder="id" disabled>
             <mat-hint>id</mat-hint>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
+
+
+
+         <mat-form-field appearance="outline">
             <mat-label>O'qituvchilar</mat-label>
             <mat-select matInput formControlName='uqtuvchi'>
               <mat-option *ngFor="let o of oqituvchilar" [value]="o">
@@ -25,7 +28,33 @@
             </mat-select>
             
             <mat-hint>O'qituvchini tanlang</mat-hint>
-          </mat-form-field>
+          </mat-form-field> 
+
+          <mat-form-field appearance="outline">
+            <mat-label>Sinf</mat-label>
+            <mat-select matInput formControlName='sinfxona'>
+              <mat-option *ngFor="let sinf of sinflar" [value]="sinf">
+                {{sinf.nom}}
+              </mat-option>
+            </mat-select>
+            
+            <mat-hint>Sinfni tanlang</mat-hint>
+          </mat-form-field> 
+
+   
+    
+
+
+
+
+
+    
+
+
+
+
+
+
 
           <button mat-raised-button color="primary">
             <mat-icon>
@@ -59,6 +88,11 @@
       <ng-container matColumnDef="uqtuvchi">
         <th mat-header-cell *matHeaderCellDef>O'qtuvchi</th>
         <td mat-cell *matCellDef="let row">{{row.uqtuvchi?.ism}} {{row.uqtuvchi?.familiya}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sinfxona">
+        <th mat-header-cell *matHeaderCellDef>sinf</th>
+        <td mat-cell *matCellDef="let row">{{row.sinfxona?.nom}}</td>
       </ng-container>
 
    

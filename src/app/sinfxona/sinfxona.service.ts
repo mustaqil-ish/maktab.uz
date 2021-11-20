@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MatDeleteDialogSinifxonaComponent } from '../fan/Dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
-import { Sinf } from './sinfxona';
+import { Sinfxona } from './sinfxona';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +27,13 @@ export class SinfxonaService {
   }
 
   getAll(page: any): Observable<any> {
-    return this.http.get<any>(this.api, { params: page });
+    return this.http.get<any[]>(this.api, { params: page });
   }
-  public create(sinflar: Sinf): Observable<Sinf> {
-    return this.http.post<Sinf>(this.api, sinflar)
+  public create(sinflar: Sinfxona): Observable<Sinfxona> {
+    return this.http.post<Sinfxona>(this.api, sinflar)
   }
-  public update(sinflar: Sinf): Observable<Sinf> {
-    return this.http.put<Sinf>(this.api, sinflar)
+  public update(sinflar: Sinfxona): Observable<Sinfxona> {
+    return this.http.put<Sinfxona>(this.api, sinflar)
   }
   public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id)

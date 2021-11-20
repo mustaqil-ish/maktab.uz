@@ -1,8 +1,10 @@
+import { Sinfxona } from "../sinfxona/sinfxona";
+
 export interface Dars {
     id: number
-    Guruh: String;
+    sinfxona: Sinfxona;
     Fan: String;
     Uqtuvchi: String;
     Xona: number;
-    UquvYili: Date;
+    UquvYili: Date; 
 }

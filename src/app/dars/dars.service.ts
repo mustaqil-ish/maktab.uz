@@ -27,8 +27,9 @@ export class DarsService {
   // }
 
   
-  getAll(page: any): Observable<any[]> {
-    return this.http.get<any[]>(this.api, { params: page });
+  
+  getAll(page: any): Observable<any> {
+    return this.http.get<any>(this.api, { params: page });
   }
   public create(Darslar: Dars): Observable<Dars> {
     return this.http.post<Dars>(this.api, Darslar);
