@@ -3,21 +3,20 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MatDeleteUquchiComponent } from '../fan/Dialog/mat-delete-uquchi/mat-delete-uquchi.component';
-import { Uquvchi } from './uquvchi';
-
+import { XonaDeleteDialogComponent } from '../../../shared/dialog/xona-delete-dialog/xona-delete-dialog.component';
+import { Xona } from './xona';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UquvchilarService {
-  api = environment.baseUrl + "/api/uquvchilar";
+export class XonaService {
+  api = environment.baseUrl + "/api/xona"
 
-  constructor(private http: HttpClient ,private dialog:MatDialog) { }
+  constructor(private http: HttpClient,private dialog: MatDialog) { }
 
   openConfirmDialog(msg : any){
     return this.dialog.open(
-      MatDeleteUquchiComponent,{
+      XonaDeleteDialogComponent,{
         width: "350px",
         height: "200px",
         data : {
@@ -26,18 +25,21 @@ export class UquvchilarService {
       });
   }
 
-  getAll(page: any): Observable<any> {
+
+  public getAll(page: any): Observable<any> {
     return this.http.get<any>(this.api, { params: page });
   }
-  public create(uquvchilar: Uquvchi): Observable<Uquvchi> {
-    return this.http.post<Uquvchi>(this.api, uquvchilar)
+  public create(xonalar: Xona): Observable<Xona> {
+    return this.http.post<Xona>(this.api, xonalar)
   }
-  public update(uquvchilar: Uquvchi): Observable<Uquvchi> {
-    return this.http.put<Uquvchi>(this.api, uquvchilar)
+
+  public update(xonalar: Xona): Observable<Xona> {
+    return this.http.put<Xona>(this.api, xonalar)
   }
+
   public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id)
   }
+
+
 }
-
-

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DarsComponent } from './admin/entity/dars/dars.component';
+import { FanComponent } from './admin/entity/fan/fan.component';
+import { HomeComponent } from './admin/entity/home/home.component';
+import { InfoComponent } from './admin/entity/info/info.component';
+import { PageNotFoundComponentComponent } from './admin/entity/page-not-found-component/page-not-found-component.component';
+import { SinfxonaComponent } from './admin/entity/sinfxona/sinfxona.component';
+import { TogarakComponent } from './admin/entity/togarak/togarak.component';
+import { UqituvchilarComponent } from './admin/entity/uqituvchilar/uqituvchilar.component';
+import { UquvYiliComponent } from './admin/entity/uquv-yili/uquv-yili.component';
+import { UquvchilarComponent } from './admin/entity/uquvchilar/uquvchilar.component';
+import { XonaComponent } from './admin/entity/xona/xona.component';
 import { AuthGuard } from './core/auth.guard';
-import { DarsComponent } from './dars/dars.component';
-import { FanComponent } from './fan/fan.component';
-import { HomeComponent } from './home/home.component';
-import { InfoComponent } from './info/info.component';
 import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import { SinfxonaComponent } from './sinfxona/sinfxona.component';
-import { TogarakComponent } from './togarak/togarak.component';
-import { UqituvchilarComponent } from './uqituvchilar/uqituvchilar.component';
-import { UquvYiliComponent } from './uquv-yili/uquv-yili.component';
-import { UquvchilarComponent } from './uquvchilar/uquvchilar.component';
-import { XonaComponent } from './xona/xona.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

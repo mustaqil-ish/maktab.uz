@@ -3,21 +3,20 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MatDeleteDialogSinifxonaComponent } from '../fan/Dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
-import { Sinfxona } from './sinfxona';
+import { FanDeleteDialogComponent } from '../../../shared/dialog/fan-delete-dialog/fan-delete-dialog.component';
+import { Fan } from './fan';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SinfxonaService {
+export class FanService {
+  api = environment.baseUrl + "/api/fan";
 
-  api = environment.baseUrl + "/api/sinf";
-  
   constructor(private http: HttpClient,private dialog: MatDialog) { }
 
   openConfirmDialog(msg : any){
     return this.dialog.open(
-      MatDeleteDialogSinifxonaComponent,{
+      FanDeleteDialogComponent,{
         width: "350px",
         height: "200px",
         data : {
@@ -27,13 +26,13 @@ export class SinfxonaService {
   }
 
   getAll(page: any): Observable<any> {
-    return this.http.get<any[]>(this.api, { params: page });
+    return this.http.get<any>(this.api, { params: page });
   }
-  public create(sinflar: Sinfxona): Observable<Sinfxona> {
-    return this.http.post<Sinfxona>(this.api, sinflar)
+  public create(fanlar: Fan): Observable<Fan> {
+    return this.http.post<Fan>(this.api, fanlar)
   }
-  public update(sinflar: Sinfxona): Observable<Sinfxona> {
-    return this.http.put<Sinfxona>(this.api, sinflar)
+  public update(fanlar: Fan): Observable<Fan> {
+    return this.http.put<Fan>(this.api, fanlar)
   }
   public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id)

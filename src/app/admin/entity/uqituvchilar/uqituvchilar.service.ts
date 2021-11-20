@@ -3,20 +3,19 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { XonaDeleteDialogComponent } from '../fan/Dialog/xona-delete-dialog/xona-delete-dialog.component';
-import { Xona } from './xona';
+import { MatDeleteDialogOqtuvchiComponent } from '../../../shared/dialog/mat-delete-dialog-oqtuvchi/mat-delete-dialog-oqtuvchi.component';
+import { Uqituvchi } from './Uqituvchi';
 
 @Injectable({
   providedIn: 'root'
 })
-export class XonaService {
-  api = environment.baseUrl + "/api/xona"
-
+export class UqituvchilarService {
+  api = environment.baseUrl + "/api/uqituvchilar";
   constructor(private http: HttpClient,private dialog: MatDialog) { }
 
   openConfirmDialog(msg : any){
     return this.dialog.open(
-      XonaDeleteDialogComponent,{
+      MatDeleteDialogOqtuvchiComponent,{
         width: "350px",
         height: "200px",
         data : {
@@ -25,21 +24,16 @@ export class XonaService {
       });
   }
 
-
-  public getAll(page: any): Observable<any> {
+  getAll(page: any): Observable<any> {
     return this.http.get<any>(this.api, { params: page });
   }
-  public create(xonalar: Xona): Observable<Xona> {
-    return this.http.post<Xona>(this.api, xonalar)
+  public create(oqituvchilar: Uqituvchi): Observable<Uqituvchi> {
+    return this.http.post<Uqituvchi>(this.api, oqituvchilar)
   }
-
-  public update(xonalar: Xona): Observable<Xona> {
-    return this.http.put<Xona>(this.api, xonalar)
+  public update(oqituvchilar: Uqituvchi): Observable<Uqituvchi> {
+    return this.http.put<Uqituvchi>(this.api, oqituvchilar)
   }
-
   public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id)
   }
-
-
 }

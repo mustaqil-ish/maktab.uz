@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Togarak } from './togarak';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogTograkComponent } from '../fan/Dialog/delete-dialog-tograk/delete-dialog-tograk.component';
+import { DeleteDialogTograkComponent } from '../../../shared/dialog/delete-dialog-tograk/delete-dialog-tograk.component';
 
 
 @Injectable({
