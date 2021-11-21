@@ -1,4 +1,3 @@
-
 <mat-card>
   <mat-card-header>
     <mat-card-title>Darslar</mat-card-title>
@@ -12,23 +11,32 @@
 
           <mat-form-field appearance="outline">
             <mat-label>id</mat-label>
-            <input  matInput placeholder="id" disabled>
+            <input matInput placeholder="id" disabled>
             <mat-hint>id</mat-hint>
           </mat-form-field>
 
 
-
-
-         <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>O'qituvchilar</mat-label>
             <mat-select matInput formControlName='uqtuvchi'>
               <mat-option *ngFor="let o of oqituvchilar" [value]="o">
                 {{o.ism + ' ' + o.familiya}}
               </mat-option>
             </mat-select>
-            
             <mat-hint>O'qituvchini tanlang</mat-hint>
-          </mat-form-field> 
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>O'quvchilar</mat-label>
+            <mat-select matInput formControlName='uquvchi'>
+              <mat-option *ngFor="let o of oquvchilar" [value]="o">
+                {{o.ism + ' ' + o.familiya}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>O'qituvchini tanlang</mat-hint>
+          </mat-form-field>
+          <br>
 
           <mat-form-field appearance="outline">
             <mat-label>Sinf</mat-label>
@@ -37,9 +45,34 @@
                 {{sinf.nom}}
               </mat-option>
             </mat-select>
-            
             <mat-hint>Sinfni tanlang</mat-hint>
-          </mat-form-field> 
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fan </mat-label>
+            <mat-select matInput formControlName='fan'>
+              <mat-option *ngFor="let fan of fanlar" [value]="fan">
+                {{fan.nom}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Xonani tanlang</mat-hint>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>xona </mat-label>
+            <mat-select matInput formControlName='xona'>
+              <mat-option *ngFor="let xona of xonalar" [value]="xona">
+                {{xona.nom}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Xonani tanlang</mat-hint>
+          </mat-form-field>
+
+
+
+
           <button mat-raised-button color="primary">
             <mat-icon>
               qo'shish
@@ -70,16 +103,33 @@
       </ng-container>
 
       <ng-container matColumnDef="uqtuvchi">
-        <th mat-header-cell *matHeaderCellDef>O'qtuvchi</th>
+        <th mat-header-cell *matHeaderCellDef>O'qtuvchilar</th>
         <td mat-cell *matCellDef="let row">{{row.uqtuvchi?.ism}} {{row.uqtuvchi?.familiya}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="uquvchi">
+        <th mat-header-cell *matHeaderCellDef>O'quvchilar</th>
+        <td mat-cell *matCellDef="let row">{{row.uquvchi?.ism}} {{row.uquvchi?.familiya}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fan">
+        <th mat-header-cell *matHeaderCellDef>Fanlar</th>
+        <td mat-cell *matCellDef="let row">{{row.fan?.nom}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="sinfxona">
-        <th mat-header-cell *matHeaderCellDef>sinf</th>
+        <th mat-header-cell *matHeaderCellDef>Sinflar</th>
         <td mat-cell *matCellDef="let row">{{row.sinfxona?.nom}}</td>
       </ng-container>
 
-   
+
+
+      <ng-container matColumnDef="xona">
+        <th mat-header-cell *matHeaderCellDef>Xonalar</th>
+        <td mat-cell *matCellDef="let row">{{row.xona?.nom}}</td>
+      </ng-container>
+
+
 
       <ng-container matColumnDef="amal">
         <th mat-header-cell *matHeaderCellDef>Amal</th>
@@ -87,7 +137,7 @@
           <button mat-mini-fab color="primary" (click)="edit(row)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-mini-fab color="primary" (click)="delete(row)">
+          <button mat-mini-fab color="warn" (click)="delete(row)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -101,5 +151,3 @@
   <mat-paginator [length]="resultsLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Paginator">
   </mat-paginator>
 </div>
-
-

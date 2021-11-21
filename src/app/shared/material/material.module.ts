@@ -74,7 +74,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
 
   ],
   exports:[
@@ -110,7 +111,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
   ]
 })
 

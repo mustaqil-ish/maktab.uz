@@ -1,4 +1,8 @@
+
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {  Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 
 
@@ -10,17 +14,37 @@ import {  Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  menuItems!: any[];
-
-  constructor(){}
 
 
+  isExpanded = false;
+  element!: HTMLElement;
 
- ngOnInit() {
+  toggleActive(event:any){
     
+    event.preventDefault();
+    if(this.element !== undefined){
+      this.element.style.backgroundColor = "white";
+    } 
+    var target = event.currentTarget;
+    target.style.backgroundColor = "#b1afae";
+    this.element = target;
   }
 
-  
-  
+
+  constructor(){
+
+
+ 
+
+  }
+
+
+
+  ngOnInit(){
+
+ 
+
+  }
+ 
 
 }

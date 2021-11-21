@@ -2,10 +2,11 @@
     <div class="content-container">
         <mat-icon class="close-icon" (click)= closeDialog()>close</mat-icon>
         <span class="content-span" full-width></span>
+        
     </div>
     <div class="buttons">
         <button [mat-dialog-close]="false" >NO</button>
-        <button [mat-dialog-close]= "true">YES</button>
+        <button style="background-color: red; color: white;" [mat-dialog-close]= "true">YES</button>
     </div>
 </div>
 

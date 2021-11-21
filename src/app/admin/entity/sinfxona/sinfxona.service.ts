@@ -29,6 +29,7 @@ export class SinfxonaService {
   getAll(page: any): Observable<any> {
     return this.http.get<any[]>(this.api, { params: page });
   }
+
   public create(sinflar: Sinfxona): Observable<Sinfxona> {
     return this.http.post<Sinfxona>(this.api, sinflar)
   }

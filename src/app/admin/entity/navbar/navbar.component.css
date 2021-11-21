@@ -1,44 +1,40 @@
 
-mat-sidenav {
-    width: 280px;
-    padding:15px;
-    background-color: #4e73df;
-    background-image: linear-gradient(
-180deg,#4e73df 10%,#224abe 100%);
-background-size: cover;
-}
-.menu-item{
-    border-bottom: 1px solid rgb(199, 182, 182);
-    padding: 15px;
-    justify-content: center;
-    align-items: center;
-}
-.main-content {
-    padding:20px;
-}
-.example-spacer {
-    flex: 1 1 auto;
-}
-@media only screen and(max-width: 500px) {
-    .hide-on-small-screens {
-       display: none;
-    }
- }
- .fafaVirus{
-     box-shadow: 2px 2px 2px 2px rgb(185, 176, 176);
- }
-
-.menu-item button  span {
+ .example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+   .example-sidenav-container {
+    flex: 1  ;
+  }
+  
+  .mat-list-item{
+    color: black;
+    
+  }
+  .mat-drawer{
+    background:White;
+  }
+  .mat-toolbar {
+    background: rgb(79, 87, 199);
     color: rgb(255, 255, 255);
-    width: 100%; 
-   border: none;
-   font-family: Georgia;
-   font-size: 17px;
-   padding-left: 0;
+   cursor: pointer;
+  }
+  
+  .example-sidenav-content {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    
+  }
+  .example-fill-remaining-space {
+    flex: 1 1 auto;  
+  }
 
-   font-weight: 350;
-   line-height: 2;
-}
 
-
-
+  

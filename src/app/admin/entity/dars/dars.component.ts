@@ -4,11 +4,18 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Fan } from '../fan/fan';
+import { FanService } from '../fan/fan.service';
 import { Sinfxona } from '../sinfxona/sinfxona';
 import { SinfxonaService } from '../sinfxona/sinfxona.service';
 import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
 import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
+import { UquvYiliService } from '../uquv-yili/uquv-yili.service';
 import { UquvYili } from '../uquv-yili/uquvYili';
+import { Uquvchi } from '../uquvchilar/uquvchi';
+import { UquvchilarService } from '../uquvchilar/uquvchilar.service';
+import { Xona } from '../xona/xona';
+import { XonaService } from '../xona/xona.service';
 import { DarsService } from './dars.service';
 
 @Component({
@@ -16,17 +23,18 @@ import { DarsService } from './dars.service';
   templateUrl: './dars.component.html',
   styleUrls: ['./dars.component.css']
 })
-export class DarsComponent implements OnInit ,AfterViewInit {
- 
-  
+export class DarsComponent implements OnInit, AfterViewInit {
+
+
   darslar: any;
   createForm: any;
   tahrirlash = false;
-  uquvyili!:UquvYili[];
   oqituvchilar!: Uqituvchi[];
-  sinflar!:Sinfxona[];
-
-  displayedColumns: string[] = ['id', 'uqtuvchi', 'sinfxona' ,'amal'];
+  sinflar!: Sinfxona[];
+  fanlar!: Fan[];
+  xonalar!: Xona[];
+  oquvchilar!:Uquvchi[];
+  displayedColumns: string[] = ['id', 'uqtuvchi', 'sinfxona', 'fan', 'xona', 'uquvchi', 'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -37,28 +45,55 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private darsService: DarsService,
+  constructor(
+    private darsService: DarsService,
+
     private uqituvchiService: UqituvchilarService,
-     private sinfService:SinfxonaService, 
+
+    private sinfService: SinfxonaService,
+
+    private fanService: FanService,
+
+    private xonaService: XonaService,
+
+    private oquvchiService:UquvchilarService,
+
     public fb: FormBuilder) { }
   ngOnInit(): void {
     this.forma = this.fb.group({
       uqtuvchi: [''],
-      sinfxona:[''],
+      sinfxona: [''],
+      fan: [''],
+      xona: [''],
+      uquvchi:[''],
     
+
+
     })
   }
 
   ngAfterViewInit() {
-    this.uqituvchiService.getAll(null).subscribe(data=>{
+    this.uqituvchiService.getAll(null).subscribe(data => {
       this.oqituvchilar = data.content;
       // 
-    
+
     });
-    this.sinfService.getAll(null).subscribe((data:any) =>{
+       this.oquvchiService.getAll(null).subscribe((data:any)=>{
+         this.oquvchilar = data.content;
+       })
+    
+
+    this.sinfService.getAll(null).subscribe((data: any) => {
       this.sinflar = data.content;
       console.log(this.sinflar[0].nom);
-    })
+    });
+    this.fanService.getAll(null).subscribe((data: any) => {
+      this.fanlar = data.content;
+    });
+    this.xonaService.getAll(null).subscribe((data: any) => {
+      this.xonalar = data.content;
+    });
+
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
@@ -113,12 +148,12 @@ export class DarsComponent implements OnInit ,AfterViewInit {
   }
 
   delete(row: any) {
-    
-          this.darsService.deleteById(row.id).subscribe(() => {
-            this.sort.sortChange.next(this.sort);
-          })
-        }
-  
+
+    this.darsService.deleteById(row.id).subscribe(() => {
+      this.sort.sortChange.next(this.sort);
+    })
+  }
+
 }
 
 

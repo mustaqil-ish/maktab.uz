@@ -31,6 +31,7 @@ import { DeleteDialogTograkComponent } from './shared/dialog/delete-dialog-togra
 import { XonaDeleteDialogComponent } from './shared/dialog/xona-delete-dialog/xona-delete-dialog.component';
 import { FanDeleteDialogComponent } from './shared/dialog/fan-delete-dialog/fan-delete-dialog.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 registerLocaleData(en);
 
@@ -58,7 +59,6 @@ registerLocaleData(en);
     FanDeleteDialogComponent,
     DashboardComponent,
     
-
   ],
   imports: [
     MaterialModule,
@@ -69,8 +69,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    
-
+    CarouselModule.forRoot(),
    
   ],
 

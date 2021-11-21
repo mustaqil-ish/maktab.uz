@@ -1,111 +1,74 @@
- <mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav (click)="sidenav.toggle()">
+<div class="example-container">
+  <mat-toolbar class="example-toolbar">
+    <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
+    <span class="example-fill-remaining-space"></span>
+    <a routerLink="/login" mat-list-item>
+      <mat-icon style="color: white;" mat-list-icon>login</mat-icon>
 
-    <p class="menu-item-list">
-      <a routerLink="/boshSahifa">
-        <button mat-stroked-button style="width: 100%;">
-          <br>
-          <mat-icon style="font-size: 50px; color: rgb(255, 255, 255); margin-top: -57px; margin-left: -35px;">home
-          </mat-icon><span>
-          </span>
-        </button>
-      </a>
+    </a>
+  </mat-toolbar>
 
-    </p>
-    <p class="menu-item">
-      <a routerLink="/oqituvchilar">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">assignment_ind</mat-icon><span>O‘qituvchilarga</span>
-        </button>
-      </a>
-    </p>
-    <p class="menu-item">
-      <a routerLink="/oquvchilar">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">accessibility</mat-icon><span>O‘quvchilarga</span>
-        </button>
-      </a>
-    </p>
-    <p>
-    <p class="menu-item">
-      <a routerLink="/togarak">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">event</mat-icon><span> To'garaklar</span>
-        </button>
-      </a>
+  <mat-sidenav-container class="example-sidenav-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+      <mat-nav-list class="dashboard">
+        <a routerLink="/boshSahifa" (click)="toggleActive($event)" mat-list-item>
+          <mat-icon  mat-list-icon>home</mat-icon>
+          <p matLine *ngIf="isExpanded">bosh sahifa</p>
+        </a>
 
-    </p>
-    <p class="menu-item">
-      <a routerLink="/xona">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">store</mat-icon><span> Xonalar</span>
-        </button>
-      </a>
-    </p>
+        <mat-divider></mat-divider>
 
-    <p class="menu-item">
-      <a routerLink="/uquvYili">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">calendar_today</mat-icon><span>O'quv Yili</span>
-        </button>
-      </a>
-    </p>
-    
-    <p class="menu-item">
-      <a routerLink="/dars">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">tag_faces</mat-icon><span>Dars</span>
-        </button>
-      </a>
-    </p>
-            
-    <p class="menu-item">
-      <a routerLink="/fan">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">supervised_user_circle</mat-icon><span>Fan</span>
-        </button>
-      </a>
-    </p> 
-    <p class="menu-item">
-      <a routerLink="/sinf">
-        <button mat-icon-button>
-          <mat-icon style="color: white;">supervised_user_circle</mat-icon><span>Sinflar</span>
-        </button>
-      </a>
-    </p> 
-
-  </mat-sidenav>
-  <mat-sidenav-content>
-
-    <mat-toolbar class="fafaVirus" color="primary">
-      <button mat-button (click)="sidenav.open()" id="menu-button" mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-     <a style="color: white; text-decoration: none;" routerLink="/boshSahifa"> <span >Maktab19.uz</span></a>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-
-        <mat-icon routerLink="/login">login</mat-icon>
-
-      </button>
-      <a style="color: white; text-decoration: none;" routerLink="/login"> <span>Login</span></a>
-    </mat-toolbar>
+        <a mat-list-item routerLink="/oqituvchilar" (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>account_box</mat-icon>
+          <p matLine *ngIf="isExpanded">O'qituvchilar</p>
+        </a>
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/oquvchilar">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <p matLine *ngIf="isExpanded">O'quvchilar</p>
+        </a>
 
 
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/sinf">
+          <mat-icon mat-list-icon>wc</mat-icon>
+          <p matLine *ngIf="isExpanded">Sinf qo'shish</p>
+        </a>
 
-    <div class="internal-container">
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/fan">
+          <mat-icon mat-list-icon>school</mat-icon>
+          <p matLine *ngIf="isExpanded">Fan qo'shish</p>
+        </a>
+
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/dars">
+          <mat-icon mat-list-icon>local_library</mat-icon>
+          <p matLine *ngIf="isExpanded">Dars qo'shish</p>
+        </a>
+
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/togarak">
+          <mat-icon mat-list-icon>assignment_ind</mat-icon>
+          <p matLine *ngIf="isExpanded">Togarak qo'shish</p>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/uquvYili">
+          <mat-icon mat-list-icon>calendar_today</mat-icon>
+          <p matLine *ngIf="isExpanded">O'quv yili</p>
+        </a>
+        <a mat-list-item (click)="toggleActive($event)" routerLink="/xona">
+          <mat-icon mat-list-icon>store_mall_directory</mat-icon>
+          <p matLine *ngIf="isExpanded">Xonalar +add</p>
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="example-sidenav-content">
       <router-outlet></router-outlet>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container> 
 
+  </mat-sidenav-container>
+</div>
 
-
-
-
-
-
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license -->
