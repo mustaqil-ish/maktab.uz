@@ -1,18 +1,28 @@
 
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {  Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
-
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
+
+  // animations: [
+  //   trigger('slideInOut', [
+  //     state('in', style({
+  //       transform: 'translate3d(0,0,0)'
+  //     })),
+  //     state('out', style({
+  //       transform: 'translate3d(100%, 0, 0)'
+  //     })),
+  //     transition('in => out', animate('400ms ease-in-out')),
+  //     transition('out => in', animate('400ms ease-in-out'))
+  //   ]),
+  // ]
  
 })
 export class NavbarComponent implements OnInit {
+
+
 
 
 

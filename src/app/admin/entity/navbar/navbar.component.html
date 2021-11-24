@@ -1,4 +1,4 @@
-<div class="example-container">
+<div  class="example-container">
   <mat-toolbar class="example-toolbar">
     <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
     <span class="example-fill-remaining-space"></span>
@@ -8,9 +8,9 @@
     </a>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container" autosize>
-    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
-      <mat-nav-list class="dashboard">
+  <mat-sidenav-container  class="example-sidenav-container" autosize>
+    <mat-sidenav  #sidenav class="example-sidenav" mode="side" opened="true">
+      <mat-nav-list  class="dashboard">
         <a routerLink="/boshSahifa" (click)="toggleActive($event)" mat-list-item>
           <mat-icon  mat-list-icon>home</mat-icon>
           <p matLine *ngIf="isExpanded">bosh sahifa</p>
