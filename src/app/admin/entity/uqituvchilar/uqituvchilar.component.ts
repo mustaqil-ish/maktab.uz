@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Uqituvchi } from './Uqituvchi';
 
 import { UqituvchilarService } from './uqituvchilar.service';
 @Component({
@@ -12,10 +14,14 @@ import { UqituvchilarService } from './uqituvchilar.service';
   templateUrl: './uqituvchilar.component.html',
   styleUrls: ['./uqituvchilar.component.css']
 })
-export class UqituvchilarComponent implements OnInit ,AfterViewInit {
+export class UqituvchilarComponent implements OnInit, AfterViewInit {
+
+  selectedStatus!: string;
+  public toggleForm1!: boolean;
 
   displayedColumns: string[] = ['id', 'ism', 'familiya', 'yosh', 'maosh', 'jins', 'amal'];
-  data = [];
+  dataSource: MatTableDataSource<Uqituvchi>;
+  data: Uqituvchi[] = [];
   key = '';
   resultsLength = 0;
   isLoadingResults = true;
@@ -24,19 +30,27 @@ export class UqituvchilarComponent implements OnInit ,AfterViewInit {
   tahrir = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  filteredCustomerList: any;
+  customerList: any;
 
   constructor(private oqituvchilarServive: UqituvchilarService,
-    public fb: FormBuilder, private dialog: MatDialog) { }
+    public fb: FormBuilder, private dialog: MatDialog) {
+
+    this.dataSource = new MatTableDataSource();
+  }
   ngOnInit(): void {
     this.forma = this.fb.group({
+
+      'jins': new FormControl(),
       id: [''],
       ism: [''],
       familiya: [''],
       yosh: [''],
-      jins: [''],
+      // jins: [''],
       maosh: ['']
 
     })
+    this.selectedStatus = "";
   }
 
   ngAfterViewInit() {
@@ -60,7 +74,7 @@ export class UqituvchilarComponent implements OnInit ,AfterViewInit {
             .pipe(catchError(() => of(null)));
         }),
         map((data: any) => {
-          // Flip flag to show that loading has finished.
+
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
 
@@ -68,38 +82,43 @@ export class UqituvchilarComponent implements OnInit ,AfterViewInit {
             return [];
           }
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
-
           this.resultsLength = data.totalElements;
           return data.content;
         })
       ).subscribe(data => this.data = data);
   }
-  qidirish() {
-    const oqituvchilar = this.forma.value;
-    this.key = oqituvchilar.id;
-    console.log(this.key);
 
-    this.paginator._changePageSize(this.paginator.pageSize);
+
+
+  qidirish(event: any) {
+    const filterField = event.target.value;
+     console.log(event.target.value);
+     
+    if (filterField) {
+      this.key = filterField;
+    } else {
+      this.key = "";
+      
+    }
+    this.sort.sortChange.next(this.sort);
   }
+
+
+
+
   saqlash() {
     const oqituvchilar = this.forma.getRawValue();
-
-
     this.oqituvchilarServive.create(oqituvchilar).subscribe(data => {
       this.key = "";
       this.forma.reset();
       this.sort.sortChange.next(this.sort);
-
     })
   }
+
   edit(oqtuvchi: any) {
     this.forma.reset(oqtuvchi);
     this.tahrir = true;
   }
-
   delete(row: any) {
     this.oqituvchilarServive.openConfirmDialog(`o'chirasizmi ${row.id} ? `).afterClosed().subscribe(
       (data => {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AccountService } from '../account.service';
 @Component({
   selector: 'app-login',
@@ -8,6 +8,22 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent implements OnInit {
 
+
+  form: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  submit() {
+    if (this.form.valid) {
+      this.submitEM.emit(this.form.value);
+    }
+  }
+  @Input() error!: string | null;
+
+  @Output() submitEM = new EventEmitter();
+
+  
   loginForm: any;
 
   constructor(private fb: FormBuilder, 
@@ -25,9 +41,9 @@ export class LoginComponent implements OnInit {
     const loginParol = this.loginForm.value;
     loginParol.aktiv = true;
     this.accountService.login(loginParol).subscribe((data)=>{
-      console.log("keldi", data)
+      console.log("tasqinlandi", data)
       localStorage.setItem('token', data.token);
-      alert("keldi")
+      alert("tasqinlandi")
     },
     (error)=>{
       console.log("error: ", error)

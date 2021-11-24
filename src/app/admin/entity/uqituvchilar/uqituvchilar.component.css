@@ -50,3 +50,8 @@ th, td{
 .mat-form-field{
  margin: 10px;
 }
+
+table {
+  width: 100%;
+}
+

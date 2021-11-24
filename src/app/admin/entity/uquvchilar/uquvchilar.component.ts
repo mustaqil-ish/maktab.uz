@@ -75,13 +75,8 @@ export class UquvchilarComponent implements OnInit, AfterViewInit {
         })
       ).subscribe(data => this.data = data);
   }
-  qidirish() {
-    const sinflar = this.forma.value;
-    this.key = sinflar.id;
-    console.log(this.key);
 
-    this.paginator._changePageSize(this.paginator.pageSize);
-  }
+
   saqlash() {
     const sinflar = this.forma.getRawValue();
     this.oquvchilarService.create(sinflar).subscribe(data => {
@@ -105,6 +100,20 @@ export class UquvchilarComponent implements OnInit, AfterViewInit {
           })
         }
       }));
+  }
+
+
+  qidirish(event: any) {
+    const filterField = event.target.value;
+     console.log(event.target.value);
+     
+    if (filterField) {
+      this.key = filterField;
+    } else {
+      this.key = "";
+      
+    }
+    this.sort.sortChange.next(this.sort);
   }
 }
 
