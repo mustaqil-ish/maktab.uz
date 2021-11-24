@@ -104,17 +104,16 @@ export class UquvchilarComponent implements OnInit, AfterViewInit {
 
 
   qidirish(event: any) {
-    const filterField = event.target.value;
-     console.log(event.target.value);
-     
+    const filterField = event.target.value; 
     if (filterField) {
       this.key = filterField;
     } else {
-      this.key = "";
-      
+      this.key = ""; 
     }
     this.sort.sortChange.next(this.sort);
   }
+
+  // 
 }
 
 

@@ -44,6 +44,12 @@
       </div>
     </div>
     <div class="example-table-container">
+
+      <mat-form-field  appearance="standard">
+        <mat-label>Qidirish</mat-label>
+        <input  matInput (keyup)="qidirish($event)" placeholder="Qidiruv" #input>
+      </mat-form-field>
+
       <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="id" matSortDisableClear
         matSortDirection="desc">
 

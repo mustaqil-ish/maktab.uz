@@ -117,13 +117,18 @@ export class FanComponent implements OnInit {
         })
       ).subscribe(data => this.data = data);
   }
-  qidirish() {
-    const fanlar = this.forma.value;
-    this.key = fanlar.id;
-    console.log(this.key);
 
-    this.paginator._changePageSize(this.paginator.pageSize);
+  qidirish(event: any) {
+    const filterField = event.target.value; 
+    if (filterField) {
+      this.key = filterField;
+    } else {
+      this.key = ""; 
+    }
+    this.sort.sortChange.next(this.sort);
   }
+
+
   saqlash() {
     const fanlar = this.forma.getRawValue();
 

@@ -74,13 +74,19 @@ export class SinfxonaComponent implements OnInit, AfterViewInit {
         })
       ).subscribe(data => this.data = data);
   }
-  qidirish() {
-    const sinflar = this.forma.value;
-    this.key = sinflar.id;
-    console.log(this.key);
 
-    this.paginator._changePageSize(this.paginator.pageSize);
+
+  qidirish(event: any) {
+    const filterField = event.target.value; 
+    if (filterField) {
+      this.key = filterField;
+    } else {
+      this.key = ""; 
+    }
+    this.sort.sortChange.next(this.sort);
   }
+
+  
   saqlash() {
     const sinflar = this.forma.getRawValue();
 
