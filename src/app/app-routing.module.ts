@@ -12,10 +12,13 @@ import { UquvYiliComponent } from './admin/entity/uquv-yili/uquv-yili.component'
 import { UquvchilarComponent } from './admin/entity/uquvchilar/uquvchilar.component';
 import { XonaComponent } from './admin/entity/xona/xona.component';
 import { AuthGuard } from './core/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: '', redirectTo:'home' , pathMatch: 'full' },
+  {path: 'dashboard',component:DashboardComponent},
   { path: 'login', component: LoginComponent },
   { path: 'boshSahifa', component: HomeComponent },
   { path: 'oqituvchilar', component: UqituvchilarComponent, canActivate: [AuthGuard] },

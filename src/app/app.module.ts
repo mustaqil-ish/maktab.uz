@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NavbarComponent } from './admin/entity/navbar/navbar.component';
 import { SinfxonaComponent } from './admin/entity/sinfxona/sinfxona.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDeleteDialogSinifxonaComponent } from './shared/dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component';
@@ -32,6 +31,8 @@ import { XonaDeleteDialogComponent } from './shared/dialog/xona-delete-dialog/xo
 import { FanDeleteDialogComponent } from './shared/dialog/fan-delete-dialog/fan-delete-dialog.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { HeaderComponent } from './header/header.component';
 
 registerLocaleData(en);
 
@@ -49,7 +50,7 @@ registerLocaleData(en);
     UquvYiliComponent,
     DarsComponent,
     FanComponent,
-    NavbarComponent,
+    
     SinfxonaComponent,
     MatDeleteDialogSinifxonaComponent,
     MatDeleteDialogOqtuvchiComponent,
@@ -58,6 +59,8 @@ registerLocaleData(en);
     XonaDeleteDialogComponent,
     FanDeleteDialogComponent,
     DashboardComponent,
+    SidenavComponent,
+    HeaderComponent,
     
   ],
   imports: [
