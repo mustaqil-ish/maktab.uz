@@ -29,7 +29,6 @@ import { MatDeleteUquchiComponent } from './shared/dialog/mat-delete-uquchi/mat-
 import { DeleteDialogTograkComponent } from './shared/dialog/delete-dialog-tograk/delete-dialog-tograk.component';
 import { XonaDeleteDialogComponent } from './shared/dialog/xona-delete-dialog/xona-delete-dialog.component';
 import { FanDeleteDialogComponent } from './shared/dialog/fan-delete-dialog/fan-delete-dialog.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
@@ -58,7 +57,7 @@ registerLocaleData(en);
     DeleteDialogTograkComponent,
     XonaDeleteDialogComponent,
     FanDeleteDialogComponent,
-    DashboardComponent,
+   
     SidenavComponent,
     HeaderComponent,
     
