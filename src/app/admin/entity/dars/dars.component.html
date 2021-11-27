@@ -85,8 +85,6 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card>
-<mat-card-content>
 
 <div class="example-container mat-elevation-z8">
   <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
@@ -96,6 +94,14 @@
     </div>
   </div>
   <div class="example-table-container">
+
+    <mat-form-field style="margin-left: 10px;" appearance="standard">
+      <mat-label>Qidirish</mat-label>
+      <input  matInput (keyup)="qidirish($event)" placeholder="Qidiruv" #input>
+    </mat-form-field>
+
+
+
     <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="id" matSortDisableClear
       matSortDirection="desc">
 
@@ -154,8 +160,5 @@
   </mat-paginator>
 </div>
 
-</mat-card-content>
 
-
-</mat-card>
 

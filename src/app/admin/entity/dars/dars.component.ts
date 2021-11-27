@@ -10,8 +10,6 @@ import { Sinfxona } from '../sinfxona/sinfxona';
 import { SinfxonaService } from '../sinfxona/sinfxona.service';
 import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
 import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
-import { UquvYiliService } from '../uquv-yili/uquv-yili.service';
-import { UquvYili } from '../uquv-yili/uquvYili';
 import { Uquvchi } from '../uquvchilar/uquvchi';
 import { UquvchilarService } from '../uquvchilar/uquvchilar.service';
 import { Xona } from '../xona/xona';
@@ -34,7 +32,7 @@ export class DarsComponent implements OnInit, AfterViewInit {
   fanlar!: Fan[];
   xonalar!: Xona[];
   oquvchilar!:Uquvchi[];
-  displayedColumns: string[] = ['id', 'uqtuvchi', 'sinfxona', 'fan', 'xona', 'uquvchi', 'amal'];
+  displayedColumns: string[] = ['id', 'uqtuvchi' , 'uquvchi', 'fan', 'sinfxona', 'xona',  'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -124,13 +122,23 @@ export class DarsComponent implements OnInit, AfterViewInit {
         })
       ).subscribe(data => this.data = data);
   }
-  qidirish() {
-    const darslar = this.forma.value;
-    this.key = darslar.id;
-    console.log(this.key);
 
-    this.paginator._changePageSize(this.paginator.pageSize);
+
+ qidirish(event: any) {
+    const filterField = event.target.value;
+     console.log(event.target.value);
+     
+    if (filterField) {
+      this.key = filterField;
+    } else {
+      this.key = "";
+      
+    }
+    this.sort.sortChange.next(this.sort);
   }
+
+
+
   saqlash() {
     const darslar = this.forma.getRawValue();
 
