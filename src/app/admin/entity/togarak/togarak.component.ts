@@ -6,7 +6,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Togarak } from './togarak';
+import { Fan } from '../fan/fan';
+import { FanService } from '../fan/fan.service';
+import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
+import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
 import { TogarakService } from './togarak.service';
 
 @Component({
@@ -16,7 +19,9 @@ import { TogarakService } from './togarak.service';
 })
 export class TogarakComponent implements AfterViewInit ,OnInit {
 
-  displayedColumns: string[] = ['id', 'oqtuvchi', 'fan', 'soat' ,'amal'];
+  oqituvchilar!: Uqituvchi[];
+  fanlar!:Fan[];
+  displayedColumns: string[] = ['id', 'uqtuvchi', 'fan', 'soat' ,'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -28,11 +33,11 @@ export class TogarakComponent implements AfterViewInit ,OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private togarakService: TogarakService,
-    public fb: FormBuilder, private dialog: MatDialog) { }
+    public fb: FormBuilder, private dialog: MatDialog,   private uqituvchiService: UqituvchilarService,private FanService:FanService) { }
   ngOnInit(): void {
     this.forma = this.fb.group({
       id: [''],
-      oqtuvchi: [''],
+      uqtuvchi: [''],
       fan: [''],
       soat: ['']
 
@@ -40,6 +45,19 @@ export class TogarakComponent implements AfterViewInit ,OnInit {
   }
 
   ngAfterViewInit() {
+
+
+
+
+
+    this.uqituvchiService.getAll(null).subscribe(data => {
+      this.oqituvchilar = data.content;
+    });
+this.FanService.getAll(null).subscribe((data:any) =>{
+  this.fanlar = data.content;
+})
+  
+    
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);

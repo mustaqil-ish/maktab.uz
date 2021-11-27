@@ -83,7 +83,7 @@ export class DarsComponent implements OnInit, AfterViewInit {
 
     this.sinfService.getAll(null).subscribe((data: any) => {
       this.sinflar = data.content;
-      console.log(this.sinflar[0].nom);
+    
     });
     this.fanService.getAll(null).subscribe((data: any) => {
       this.fanlar = data.content;
@@ -125,14 +125,11 @@ export class DarsComponent implements OnInit, AfterViewInit {
 
 
  qidirish(event: any) {
-    const filterField = event.target.value;
-     console.log(event.target.value);
-     
+    const filterField = event.target.value; 
     if (filterField) {
       this.key = filterField;
     } else {
       this.key = "";
-      
     }
     this.sort.sortChange.next(this.sort);
   }
@@ -141,8 +138,6 @@ export class DarsComponent implements OnInit, AfterViewInit {
 
   saqlash() {
     const darslar = this.forma.getRawValue();
-
-
     this.darsService.create(darslar).subscribe(data => {
       this.key = "";
       this.forma.reset();
