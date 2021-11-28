@@ -17,11 +17,10 @@ import { TogarakService } from './togarak.service';
   templateUrl: './togarak.component.html',
   styleUrls: ['./togarak.component.css']
 })
-export class TogarakComponent implements AfterViewInit ,OnInit {
-
+export class TogarakComponent implements AfterViewInit, OnInit {
   oqituvchilar!: Uqituvchi[];
-  fanlar!:Fan[];
-  displayedColumns: string[] = ['id', 'uqtuvchi', 'fan', 'soat' ,'amal'];
+  fanlar!: Fan[];
+  displayedColumns: string[] = ['id', 'uqtuvchi', 'fan', 'soat', 'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -33,31 +32,23 @@ export class TogarakComponent implements AfterViewInit ,OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private togarakService: TogarakService,
-    public fb: FormBuilder, private dialog: MatDialog,   private uqituvchiService: UqituvchilarService,private FanService:FanService) { }
+    public fb: FormBuilder, private dialog: MatDialog, private uqituvchiService: UqituvchilarService, private FanService: FanService) { }
   ngOnInit(): void {
     this.forma = this.fb.group({
       id: [''],
       uqtuvchi: [''],
       fan: [''],
       soat: ['']
-
     })
   }
-
   ngAfterViewInit() {
-
-
-
-
 
     this.uqituvchiService.getAll(null).subscribe(data => {
       this.oqituvchilar = data.content;
     });
-this.FanService.getAll(null).subscribe((data:any) =>{
-  this.fanlar = data.content;
-})
-  
-    
+    this.FanService.getAll(null).subscribe((data: any) => {
+      this.fanlar = data.content;
+    })
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -66,7 +57,6 @@ this.FanService.getAll(null).subscribe((data:any) =>{
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-
           let pageable = {
             key: this.key,
             size: this.paginator.pageSize,
@@ -98,16 +88,16 @@ this.FanService.getAll(null).subscribe((data:any) =>{
 
 
   qidirish(event: any) {
-    const filterField = event.target.value; 
+    const filterField = event.target.value;
     if (filterField) {
       this.key = filterField;
     } else {
-      this.key = ""; 
+      this.key = "";
     }
     this.sort.sortChange.next(this.sort);
   }
 
-  
+
   saqlash() {
     const sinflar = this.forma.getRawValue();
 

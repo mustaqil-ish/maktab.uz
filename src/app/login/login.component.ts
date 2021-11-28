@@ -1,56 +1,68 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { AccountService } from '../account.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { JwtUtil } from '../core/jwt.util';
+
+import { LoginService } from '../login/login.service';
+import { StateStorageService } from './statestorege.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
-
-  submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
-    }
-  }
-  @Input() error!: string | null;
-
-  @Output() submitEM = new EventEmitter();
-
-  
   loginForm: any;
+  surovBajarilmoqda = false;
 
-  constructor(private fb: FormBuilder, 
-    private accountService: AccountService) { }
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private _snackBar: MatSnackBar,
+    private jwtUtil: JwtUtil,
+    private stateStorageService: StateStorageService) { }
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      login: [''],
-      parol: ['']
-    });
-  }
-
-
-  login(){
-    const loginParol = this.loginForm.value;
-    loginParol.aktiv = true;
-    this.accountService.login(loginParol).subscribe((data)=>{
-      console.log("tasqinlandi", data)
-      localStorage.setItem('token', data.token);
-      alert("tasqinlandi")
-    },
-    (error)=>{
-      console.log("error: ", error)
-      alert(error.message)
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      login: [null, [Validators.required, Validators.minLength(6)]],
+      parol: [null, [Validators.required, Validators.minLength(6)]],
+      rememberMe: [null],
     });
 
   }
+  onLogin() {
+    this.jwtUtil.clear();
+    const loginParol = this.loginForm.getRawValue();
+    this.surovBajarilmoqda = true;
+    console.log(loginParol);
+    this.loginService.login(loginParol).subscribe(
+      () => {
+        this.surovBajarilmoqda = false;
 
+        let roles = this.jwtUtil.getRoles();
 
+        const prevUrl = this.stateStorageService.getUrl();
+        if (prevUrl) {
+          this.router.navigate([prevUrl]);
+        } else {
+          this.router.navigate(['/boshSahifa']);
+        }
+      },
+      (error) => {
+        let message = "Login yoki parol xato!";
+        if (error.error.message) {
+          if (error.error.message != "INVALID_CREDENTIALS") {
+            message = error.error.message;
+          }
+        }
+        this._snackBar.open(message, 'X', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+
+        });
+        this.surovBajarilmoqda = false;
+      }
+    )
+
+  }
 }

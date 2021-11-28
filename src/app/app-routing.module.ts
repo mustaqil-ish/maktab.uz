@@ -30,6 +30,10 @@ const routes: Routes = [
   { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
   { path: 'fan', component: FanComponent, canActivate: [AuthGuard] },
   { path: 'sinf', component: SinfxonaComponent, canActivate: [AuthGuard] },
+ { path: 'login',
+  loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+},
   { path: '**', component: PageNotFoundComponentComponent }
 
 ];

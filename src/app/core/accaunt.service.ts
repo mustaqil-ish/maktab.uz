@@ -4,11 +4,40 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, ReplaySubject, of } from 'rxjs';
 import { shareReplay, tap, catchError, map } from 'rxjs/operators';
-import { User } from '../app/core/user';
+import { User } from './user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
+
+
+
+
+  // getToken(){
+  //   return localStorage.getItem('token');
+  // }
+  // api = environment.baseUrl + "/api/account";
+  
+
+  // login(loginParol: any): Observable<any>{
+  //   return this.http.post(this.api+"/authenticate", loginParol);
+  // }
+
+  // register(user: any): Observable<any>{
+  //   return this.http.post(this.api + "/register", user);
+  // }
+
+
+  // setToken(token: string){
+  //   localStorage.setItem('token', token);
+  // }
+
+
+
+
+
+
+
   private userIdentity: User | null = null;
   private authenticationState = new ReplaySubject<User | null>(1);
   private userCache$?: Observable<User | null>;
@@ -21,12 +50,12 @@ export class AccountService {
   save(user: User): Observable<{}> {
     return this.http.post(this.baseApi, user);
   }
+
   authenticate(identity: User | null): void {
     
     this.userIdentity = identity;
     this.authenticationState.next(this.userIdentity);
   }
-
   hasAnyAuthority(lavozimlar: string[] | string): boolean {
     if (!this.userIdentity) {
       return false;

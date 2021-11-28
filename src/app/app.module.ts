@@ -10,7 +10,7 @@ import { InfoComponent } from './admin/entity/info/info.component';
 import { HomeComponent } from './admin/entity/home/home.component';
 import { MaterialModule } from './shared/material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth-interceptor';
 import { UquvYiliComponent } from './admin/entity/uquv-yili/uquv-yili.component';
@@ -32,6 +32,7 @@ import { FanDeleteDialogComponent } from './shared/dialog/fan-delete-dialog/fan-
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 registerLocaleData(en);
 
@@ -45,11 +46,10 @@ registerLocaleData(en);
     TogarakComponent,
     InfoComponent,
     HomeComponent,
-    LoginComponent,
+    // LoginComponent,
     UquvYiliComponent,
     DarsComponent,
     FanComponent,
-    
     SinfxonaComponent,
     MatDeleteDialogSinifxonaComponent,
     MatDeleteDialogOqtuvchiComponent,
@@ -57,9 +57,9 @@ registerLocaleData(en);
     DeleteDialogTograkComponent,
     XonaDeleteDialogComponent,
     FanDeleteDialogComponent,
-   
     SidenavComponent,
     HeaderComponent,
+
     
   ],
   imports: [
@@ -76,20 +76,15 @@ registerLocaleData(en);
   ],
 
   providers: [
+ 
     {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
 
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-
-    },
-   
-
-
+    }
   ],
-
   bootstrap: [AppComponent]
-
 })
 
 export class AppModule { }
