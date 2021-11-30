@@ -4,17 +4,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Fan } from '../fan/fan';
-import { FanService } from '../fan/fan.service';
-import { Sinfxona } from '../sinfxona/sinfxona';
-import { SinfxonaService } from '../sinfxona/sinfxona.service';
-import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
-import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
-import { Uquvchi } from '../uquvchilar/uquvchi';
-import { UquvchilarService } from '../uquvchilar/uquvchilar.service';
-import { Xona } from '../xona/xona';
-import { XonaService } from '../xona/xona.service';
-import { DarsService } from './dars.service';
+import { Fan } from '../../../shared/model/fan';
+import { FanService } from '../../../shared/service/fan.service';
+import { Sinfxona } from '../../../shared/model/sinfxona';
+import { SinfxonaService } from '../../../shared/service/sinfxona.service';
+import { Uqituvchi } from '../../../shared/model/Uqituvchi';
+import { UqituvchilarService } from '../../../shared/service/uqituvchilar.service';
+import { Uquvchi } from '../../../shared/model/uquvchi';
+import { UquvchilarService } from '../../../shared/service/uquvchilar.service';
+import { Xona } from '../../../shared/model/xona';
+import { XonaService } from '../../../shared/service/xona.service';
+import { DarsService } from '../../../shared/service/dars.service';
 
 @Component({
   selector: 'app-dars',
@@ -23,7 +23,6 @@ import { DarsService } from './dars.service';
 })
 export class DarsComponent implements OnInit, AfterViewInit {
 
-
   darslar: any;
   createForm: any;
   tahrirlash = false;
@@ -31,8 +30,8 @@ export class DarsComponent implements OnInit, AfterViewInit {
   sinflar!: Sinfxona[];
   fanlar!: Fan[];
   xonalar!: Xona[];
-  oquvchilar!:Uquvchi[];
-  displayedColumns: string[] = ['id', 'uqtuvchi' , 'uquvchi', 'fan', 'sinfxona', 'xona',  'amal'];
+  oquvchilar!: Uquvchi[];
+  displayedColumns: string[] = ['id', 'uqtuvchi', 'uquvchi', 'fan', 'sinfxona', 'xona', 'amal'];
   data = [];
   key = '';
   resultsLength = 0;
@@ -54,7 +53,7 @@ export class DarsComponent implements OnInit, AfterViewInit {
 
     private xonaService: XonaService,
 
-    private oquvchiService:UquvchilarService,
+    private oquvchiService: UquvchilarService,
 
     public fb: FormBuilder) { }
   ngOnInit(): void {
@@ -63,10 +62,7 @@ export class DarsComponent implements OnInit, AfterViewInit {
       sinfxona: [''],
       fan: [''],
       xona: [''],
-      uquvchi:[''],
-    
-
-
+      uquvchi: [''],
     })
   }
 
@@ -76,14 +72,14 @@ export class DarsComponent implements OnInit, AfterViewInit {
       // 
 
     });
-       this.oquvchiService.getAll(null).subscribe((data:any)=>{
-         this.oquvchilar = data.content;
-       })
-    
+    this.oquvchiService.getAll(null).subscribe((data: any) => {
+      this.oquvchilar = data.content;
+    })
+
 
     this.sinfService.getAll(null).subscribe((data: any) => {
       this.sinflar = data.content;
-    
+
     });
     this.fanService.getAll(null).subscribe((data: any) => {
       this.fanlar = data.content;
@@ -124,8 +120,8 @@ export class DarsComponent implements OnInit, AfterViewInit {
   }
 
 
- qidirish(event: any) {
-    const filterField = event.target.value; 
+  qidirish(event: any) {
+    const filterField = event.target.value;
     if (filterField) {
       this.key = filterField;
     } else {

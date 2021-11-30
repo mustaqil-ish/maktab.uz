@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { SinfxonaService } from './sinfxona.service';
+import { SinfxonaService } from '../../../shared/service/sinfxona.service';
 @Component({
   selector: 'app-sinfxona',
   templateUrl: './sinfxona.component.html',

@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { UquvYiliService } from './uquv-yili.service';
+import { UquvYiliService } from '../../../shared/service/uquv-yili.service';
 
 @Component({
   selector: 'app-uquv-yili',

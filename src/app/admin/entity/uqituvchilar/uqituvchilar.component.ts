@@ -6,9 +6,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Uqituvchi } from './Uqituvchi';
+import { Uqituvchi } from '../../../shared/model/Uqituvchi';
 
-import { UqituvchilarService } from './uqituvchilar.service';
+import { UqituvchilarService } from '../../../shared/service/uqituvchilar.service';
 @Component({
   selector: 'app-uqituvchilar',
   templateUrl: './uqituvchilar.component.html',

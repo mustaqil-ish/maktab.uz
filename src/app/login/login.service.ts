@@ -5,7 +5,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../core/accaunt.service';
 import { JwtUtil } from '../core/jwt.util';
-import { User } from '../core/user';
+import { User } from '../shared/model/user';
 
 @Injectable({
   providedIn: 'root'

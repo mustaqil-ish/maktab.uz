@@ -2,7 +2,7 @@
 	<div class="content px20">
 	  <form class="login-form" [formGroup]='loginForm' (ngSubmit)="onLogin()">
 		<div class="text-center">
-		  <h1 class="app-name">BTCWMZ.UZ  
+		  <h1 class="app-name">MAKTAB.UZ 
 		  </h1>
 		  <h2> Tizimga kirish</h2>
 		</div>
@@ -25,11 +25,10 @@
 			<button type="submit" mat-raised-button color="primary" [disabled]='loginForm.invalid || surovBajarilmoqda'
 			  class="w-100">Kirish</button>
 		  </div>
-		  <div fxFlexFill fxFlexFil.lg='6'>
-			  <a class="mt-5" [routerLink]="['./register']" color="secondary" class="w-50">Ro'yxatdan o'tish</a>
-			<br>
-			   <a class="mt-5" [routerLink]="['/']" color="secondary" class="w-50">Bosh sahifaga qaytish</a>
-		  </div>
+		  <!-- <div fxFlexFill fxFlexFil.lg='6'>
+			<a><button mat-flat-button   [routerLink]="['./register']">Ro'yxatdan o'tish</button></a><br>
+			<a><button style="margin-top: 5px;"  mat-flat-button  [routerLink]="['/']" >Bosh sahifaga Qaytish  </button></a>			   
+		  </div> -->
 		</div>
 	  </form>
 	</div>

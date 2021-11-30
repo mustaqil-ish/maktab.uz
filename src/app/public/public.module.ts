@@ -1,0 +1,23 @@
+import { NgModule } from '@angular/core';
+
+import { PublicRoutingModule } from './public-roteng.module';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from '../admin/header/header.component';
+import { CommonModule } from '@angular/common';
+
+@NgModule({
+  declarations: [
+    HomeComponent,
+    HeaderComponent,
+    
+  ],
+  imports: [
+ 
+    PublicRoutingModule,
+    MaterialModule,
+    CommonModule
+  ],
+  bootstrap: [HomeComponent]
+})
+export class PublicModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { XonaService } from './xona.service';
-import { Xona } from './xona';
+import { XonaService } from '../../../shared/service/xona.service';
+import { Xona } from '../../../shared/model/xona';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';

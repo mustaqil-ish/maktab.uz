@@ -9,10 +9,6 @@ declare const myTest: any;
 })
 export class AppComponent {
  
-  sidebarOpen = true;
 
-  sidebarToggler(){
-    this.sidebarOpen = !this.sidebarOpen;
-  }
 
 }

@@ -6,11 +6,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Fan } from '../fan/fan';
-import { FanService } from '../fan/fan.service';
-import { Uqituvchi } from '../uqituvchilar/Uqituvchi';
-import { UqituvchilarService } from '../uqituvchilar/uqituvchilar.service';
-import { TogarakService } from './togarak.service';
+import { Fan } from '../../../shared/model/fan';
+import { FanService } from '../../../shared/service/fan.service';
+import { Uqituvchi } from '../../../shared/model/Uqituvchi';
+import { UqituvchilarService } from '../../../shared/service/uqituvchilar.service';
+import { TogarakService } from '../../../shared/service/togarak.service';
 
 @Component({
   selector: 'app-togarak',

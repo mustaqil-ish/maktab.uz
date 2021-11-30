@@ -5,8 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Fan } from './fan';
-import { FanService } from './fan.service';
+import { Fan } from '../../../shared/model/fan';
+import { FanService } from '../../../shared/service/fan.service';
 
 @Component({
   selector: 'app-fan',
