@@ -9,14 +9,13 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     HomeComponent,
-    HeaderComponent,
-    
+
   ],
   imports: [
- 
+    CommonModule,
     PublicRoutingModule,
     MaterialModule,
-    CommonModule
+
   ],
   bootstrap: [HomeComponent]
 })

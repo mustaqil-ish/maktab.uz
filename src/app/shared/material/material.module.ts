@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 
 //Angular Material Components
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -43,8 +43,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -76,7 +75,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ],
   exports:[
@@ -112,6 +112,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatNativeDateModule,
+     MatDatepickerModule,
     MatNativeDateModule,
     
     

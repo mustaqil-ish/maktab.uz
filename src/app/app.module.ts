@@ -18,7 +18,6 @@ import { CoreModule } from './core/core-module';
       
   ],
   imports: [
-    
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -28,9 +27,6 @@ import { CoreModule } from './core/core-module';
     MaterialModule,    
     CoreModule,
     SharedModule,
-   
-    
-   
   ],
 
   providers: [

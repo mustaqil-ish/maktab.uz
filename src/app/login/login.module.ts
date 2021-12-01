@@ -10,16 +10,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
-    imports: [
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      MaterialModule,
-      LoginRoutingModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
+  declarations: [LoginComponent, RegisterComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    LoginRoutingModule,
+   
 
-    ],
-    declarations: [LoginComponent, RegisterComponent]
-  })
-export class LoginModule {}
+
+  ],
+
+})
+export class LoginModule { }

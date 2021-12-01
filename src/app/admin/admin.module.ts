@@ -22,10 +22,12 @@ import { MatDeleteUquchiComponent } from "../shared/dialog/mat-delete-uquchi/mat
 import { XonaDeleteDialogComponent } from "../shared/dialog/xona-delete-dialog/xona-delete-dialog.component";
 import { MatDeleteDialogSinifxonaComponent } from "../shared/dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component";
 import { AppRoutingModule } from "../app-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations:[
         SidenavComponent,
+        HeaderComponent,
         DashboardComponent,
         UqituvchilarComponent,
         UquvchilarComponent,
@@ -36,23 +38,25 @@ import { AppRoutingModule } from "../app-routing.module";
         FanComponent,
         DarsComponent,
         LayoutComponent,
-        HeaderComponent,
         DeleteDialogTograkComponent,
         FanDeleteDialogComponent,
         MatDeleteDialogOqtuvchiComponent,
         MatDeleteUquchiComponent,
         XonaDeleteDialogComponent,
         MatDeleteDialogSinifxonaComponent,
+
         
         
         
+
     ],
     imports: [
        
         CommonModule,
         AdminRoutingModule,
         MaterialModule,
-        SharedModule
+        FormsModule,
+        ReactiveFormsModule
       ],
 })
 
