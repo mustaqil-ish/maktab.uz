@@ -62,11 +62,6 @@ body {
       list-style: none;
   }
   
-
-
-
-
-  
   .section-header h3 {
     font-size: 36px;
     color: #283d50;
@@ -84,15 +79,9 @@ body {
     width: 50%;
   }
   
-  /* Section with background
-  --------------------------------*/
-  
   .section-bg {
     background: #ecf5ff;
   }
-  
-  /* About Us Section
-  --------------------------------*/
   
   #about {
     background: #fff;
@@ -193,9 +182,6 @@ body {
     font-weight: 600;
     font-size: 24px;
   }
-  
-  /* Services Section
-  --------------------------------*/
   
   #services {
     padding: 60px 0 40px 0;
@@ -326,10 +312,7 @@ body {
     font-size: 14px;
     color: #cce5ff;
   }
-  
-  /* Portfolio Section
-  --------------------------------*/
-  
+
   #portfolio {
     padding: 60px 0;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -475,9 +458,6 @@ body {
     opacity: 1;
   }
   
-  /* Testimonials Section
-  --------------------------------*/
-  
   #testimonials {
     padding: 60px 0;
     box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -533,9 +513,6 @@ body {
     background-color: #007bff;
   }
   
-  /* Team Section
-  --------------------------------*/
-  
   #team {
     background: #fff;
     padding: 60px 0;
@@ -571,23 +548,7 @@ body {
     right: 0;
     transition: 0.2s;
   }
-  
-  /* #team .member .member-info-content {
-    margin-top: 50px;
-    transition: margin 0.2s;
-  }
-   */
-  /* #team .member:hover .member-info {
-    background: rgba(0, 62, 128, 0.7);
-    opacity: 1;
-    transition: 0.4s;
-  } */
-  
-  /* #team .member:hover .member-info-content {
-    margin-top: 0;
-    transition: margin 0.4s;
-  } */
-  
+
   #team .member h4 {
     font-weight: 700;
     margin-bottom: 2px;
@@ -619,8 +580,7 @@ body {
     margin: 0 2px;
   }
   
-  /* Clients Section
-  --------------------------------*/
+
   
   #clients {
     padding: 60px 0;
@@ -662,11 +622,6 @@ body {
   #clients img {
     transition: all 0.4s ease-in-out;
   }
-  
-
-  /*--------------------------------------------------------------
-  # Footer
-  --------------------------------------------------------------*/
   
   #footer {
     background: #00428a;
@@ -811,10 +766,7 @@ body {
     color: #f1f7ff;
   }
   
-  /*--------------------------------------------------------------
-  # Responsive Media Queries
-  --------------------------------------------------------------*/
-  
+/* cutvuvt6v7iyi */
   @media (min-width: 992px) {
     #testimonials .testimonial-item p {
       width: 80%;
@@ -895,5 +847,8 @@ body {
       padding: 100px 0 20px 0;
     }
   }
+ .footer-links ul li a {
+   text-decoration: none;
+ }
 
  
