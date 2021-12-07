@@ -11,10 +11,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core-module';
+import { UserComponent } from './admin/entity/user/user.component';
+import { UserActivDialogComponent } from './admin/entity/user-activ-dialog/user-activ-dialog.component';
+import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    UserComponent,
+    UserActivDialogComponent,
+    DeleteDialogComponent,
       
   ],
   imports: [

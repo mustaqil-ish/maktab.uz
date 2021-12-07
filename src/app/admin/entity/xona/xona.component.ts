@@ -15,63 +15,6 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class XonaComponent implements OnInit {
 
-  // xonalar: any;
-  // createForm: any;
-  // tahrirlash = false;
-
-  // constructor(private xonalarService: XonaService, private formBuilder: FormBuilder) { }
-  // refresh() {
-  //   this.xonalarService.getAll()
-  //     .subscribe((x:any) => {
-  //       this.xonalar = x.content;
-  //     });
-  // }
-  // ngOnInit(): void {
-
-  //   this.refresh();
-  //   this.createForm = this.formBuilder.group({
-  //     id: [''],
-  //     sigim: [''],
-  //     nom: [''],
-  //     bino: ['']
-  //   });
-  // }
-  // saqlash() {
-  //   const xonalar = this.createForm.value;
-  //   if (!this.tahrirlash) {
-  //     this.xonalarService.create(xonalar)
-  //       .subscribe(data => {
-  //         this.refresh();
-  //       });
-  //   }
-  //   else {
-  //     this.xonalarService.update(xonalar)
-  //       .subscribe(date => {
-  //         this.refresh();
-  //       });
-  //   }
-  // }
-  // ochirish(id: number) {
-
-  //   if (id) {
-  //     this.xonalarService.deleteById(id)
-  //       .subscribe(data => {
-  //         this.refresh();
-  //       });
-  //   }
-  // }
-  // tahrirlashniBoshlash(xonalar: Xona) {
-  //   this.createForm.reset(xonalar);
-  //   this.tahrirlash = true;
-  // }
-
-
-
-
-
-
-
-
   displayedColumns: string[] = ['id', 'nom', 'bino', 'sigim' ,'amal'];
   data = [];
   key = '';
@@ -88,9 +31,9 @@ export class XonaComponent implements OnInit {
   ngOnInit(): void {
     this.forma = this.fb.group({
       id: [''],
-       nom: [''],
-       bino: [''],
-         sigim: [''],
+      nom: [''],
+      bino: [''],
+      sigim: [''],
          
           
 

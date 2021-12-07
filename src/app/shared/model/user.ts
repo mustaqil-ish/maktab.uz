@@ -1,8 +1,9 @@
 import { Lavozim } from "./lavozimlar";
 
 export interface User{
-    login: string;
     id: number;
+    login: string;
+    parol:string;
     ism: string;
     familiya: string;
     aktiv:boolean;

@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "../core/auth.guard";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+// import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DarsComponent } from "./entity/dars/dars.component";
 import { FanComponent } from "./entity/fan/fan.component";
 import { SinfxonaComponent } from "./entity/sinfxona/sinfxona.component";
@@ -10,6 +10,7 @@ import { TogarakComponent } from "./entity/togarak/togarak.component";
 import { UqituvchilarComponent } from "./entity/uqituvchilar/uqituvchilar.component";
 import { UquvYiliComponent } from "./entity/uquv-yili/uquv-yili.component";
 import { UquvchilarComponent } from "./entity/uquvchilar/uquvchilar.component";
+import { UserComponent } from "./entity/user/user.component";
 import { XonaComponent } from "./entity/xona/xona.component";
 import { LayoutComponent } from "./layout.component";
 
@@ -20,11 +21,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: "dashboard"
+            redirectTo: "user"
           },
           {
-            path: 'dashboard',
-            component: DashboardComponent
+            path: 'user',
+            component: UserComponent
           },
     { path: 'oqituvchilar', component: UqituvchilarComponent, canActivate: [AuthGuard] },
     { path: 'oquvchilar', component: UquvchilarComponent, canActivate: [AuthGuard] },
@@ -33,9 +34,12 @@ const routes: Routes = [
     { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
     { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
     { path: 'fan', component: FanComponent, canActivate: [AuthGuard] },
-    { path: 'sinf', component: SinfxonaComponent, canActivate: [AuthGuard] 
+    { path: 'sinf', component: SinfxonaComponent, canActivate: [AuthGuard]}, 
+    // {path:'user' ,component:UserComponent ,canActivate:[AuthGuard]},
+    
    
-},
+
+
 ],
 }
 

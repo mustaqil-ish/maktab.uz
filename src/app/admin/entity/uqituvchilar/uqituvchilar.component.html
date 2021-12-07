@@ -68,17 +68,13 @@
   </div>
   <div class="example-table-container">
 
-
       <mat-form-field  appearance="standard">
         <mat-label>Qidirish</mat-label>
         <input  matInput (keyup)="qidirish($event)" placeholder="Qidiruv" #input>
       </mat-form-field>
 
-
     <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="id" matSortDisableClear
       matSortDirection="desc">
-
-     
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">ID</th>
@@ -109,8 +105,6 @@
         <th mat-header-cell *matHeaderCellDef>Jinsi</th>
         <td mat-cell *matCellDef="let row">{{row.jins}}</td>
       </ng-container>
-
-     
 
       <ng-container matColumnDef="amal">
         <th mat-header-cell *matHeaderCellDef>Amal</th>
