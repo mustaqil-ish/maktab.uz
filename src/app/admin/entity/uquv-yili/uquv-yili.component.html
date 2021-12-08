@@ -49,6 +49,9 @@
   </mat-card-content>
 </mat-card>
 
+<mat-card>
+  
+
 <div class="example-container mat-elevation-z8">
   <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -103,3 +106,4 @@
   <mat-paginator [length]="resultsLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Paginator">
   </mat-paginator>
 </div>
+</mat-card>

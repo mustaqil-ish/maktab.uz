@@ -57,6 +57,12 @@
   </mat-card-content>
 </mat-card>
 
+<mat-card>
+
+
+
+
+
 <div class="example-container mat-elevation-z8">
   <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -116,6 +122,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-
-
 </div>
+</mat-card>
