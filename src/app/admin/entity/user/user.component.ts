@@ -10,6 +10,9 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit, AfterViewInit {
+
+
+
   data = [];
   resultsLength = 0;
   isLoadingResults = true;
@@ -31,22 +34,25 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.isLoadingResults = false;
     })
   }
+
   ngOnInit(): void {
     this.forma = this.formBuilder.group({
-
       id: [''],
       ism: [''],
       familiya: [''],
       login: [''],
       parol: [''],
-      'aktiv' : new FormControl(),
+      aktiv: [''],
 
     });
-    this.selectedStatus = "";
-   this.loadData();
+    this.loadData();
+
+
+
   }
-  loadData(){
-     this.userservice.getAll().subscribe(data => {
+
+  loadData() {
+    this.userservice.getAll().subscribe(data => {
       this.data = data;
     })
   }
@@ -56,21 +62,21 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.forma.reset();
       this.loadData();
     })
-  }
 
+  }
   edit(userlar: any) {
     this.forma.reset(userlar);
     this.tahrir = true;
-     
+
   }
   delete(row: any) {
     this.userservice.openConfirmDialog(`o'chirasizmi ${row.id} ? `).afterClosed().subscribe(
       (data => {
         if (data) {
           this.userservice.deleteById(row.id).subscribe(() => {
-         this.loadData();
+            this.loadData();
           })
-        }     
-      }));  
+        }
+      }));
   }
 }

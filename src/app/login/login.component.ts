@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         if (prevUrl) {
           this.router.navigate([prevUrl]);
         } else {
-          this.router.navigate(['/boshSahifa']);
+          this.router.navigate(['/admin']);
         }
       },
       (error) => {
