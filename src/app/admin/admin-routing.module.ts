@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthGuard } from "../core/auth.guard";
+
+import { UserRouteAccessGuard } from "../core/user-route-access.guard";
+import { Lavozim } from "../shared/model/lavozimlar";
 // import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DarsComponent } from "./entity/dars/dars.component";
 import { FanComponent } from "./entity/fan/fan.component";
@@ -15,39 +17,43 @@ import { XonaComponent } from "./entity/xona/xona.component";
 import { LayoutComponent } from "./layout.component";
 
 const routes: Routes = [
-    {
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
         path: '',
-        component: LayoutComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: "user"
-          },
-          {
-            path: 'user',
-            component: UserComponent
-          },
-    { path: 'oqituvchilar', component: UqituvchilarComponent, canActivate: [AuthGuard] },
-    { path: 'oquvchilar', component: UquvchilarComponent, canActivate: [AuthGuard] },
-    { path: 'xona', component: XonaComponent, canActivate: [AuthGuard] },
-    { path: 'togarak', component: TogarakComponent, canActivate: [AuthGuard] },
-    { path: 'uquvYili', component: UquvYiliComponent, canActivate: [AuthGuard] },
-    { path: 'dars', component: DarsComponent, canActivate: [AuthGuard] },
-    { path: 'fan', component: FanComponent, canActivate: [AuthGuard] },
-    { path: 'sinf', component: SinfxonaComponent, canActivate: [AuthGuard]}, 
-    // {path:'user' ,component:UserComponent ,canActivate:[AuthGuard]},
-    
-   
+        redirectTo: "xona"
+      },
+      {
+        path: 'user',
+        component: UserComponent,
+        canActivate: [UserRouteAccessGuard],
+        data:{
+          authorities: [Lavozim.ADMIN, Lavozim.DIREKTOR]
+        }
+      },
+      { path: 'oqituvchilar', component: UqituvchilarComponent},
+      { path: 'oquvchilar', component: UquvchilarComponent },
+      { path: 'xona', component: XonaComponent },
+      { path: 'togarak', component: TogarakComponent, canActivate: [UserRouteAccessGuard] },
+      { path: 'uquvYili', component: UquvYiliComponent, canActivate: [UserRouteAccessGuard] },
+      { path: 'dars', component: DarsComponent, canActivate: [UserRouteAccessGuard] },
+      { path: 'fan', component: FanComponent, canActivate: [UserRouteAccessGuard] },
+      { path: 'sinf', component: SinfxonaComponent, canActivate: [UserRouteAccessGuard] },
+      // {path:'user' ,component:UserComponent ,canActivate:[UserRouteAccessGuard]},
 
 
-],
-}
+
+
+    ],
+  }
 
 ];
 
 @NgModule({
-    imports:[ RouterModule.forChild(routes)],
-    exports:[RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 
 })
 
@@ -62,4 +68,4 @@ const routes: Routes = [
 
 
 
-    export class AdminRoutingModule { }
+export class AdminRoutingModule { }

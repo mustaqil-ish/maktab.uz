@@ -15,4 +15,4 @@
 <a mat-list-item  routerLink="togarak"><mat-icon>assignment_ind</mat-icon>To'garak</a>
 <a mat-list-item  routerLink="xona"><mat-icon>store_mall_directory</mat-icon>Xonalar Add</a>
 <a mat-list-item  routerLink="uquvYili"><mat-icon>calendar_today</mat-icon>O'quv yili</a>
-<a mat-list-item  routerLink="user"><mat-icon>calendar_today</mat-icon>Foydalanuvchilar</a>
+<a mat-list-item   *ngIf="isAdmin" routerLink="user"><mat-icon>calendar_today</mat-icon>Foydalanuvchilar</a>

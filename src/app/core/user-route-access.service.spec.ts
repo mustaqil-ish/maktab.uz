@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserRouteAccessService } from './user-route-access.service';
+import { UserRouteAccessGuard } from './user-route-access.guard';
 
 describe('UserRouteAccessService', () => {
-  let service: UserRouteAccessService;
+  let service: UserRouteAccessGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UserRouteAccessService);
+    service = TestBed.inject(UserRouteAccessGuard);
   });
 
   it('should be created', () => {

@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
 
         const prevUrl = this.stateStorageService.getUrl();
         if (prevUrl) {
-          this.router.navigate([prevUrl]);
+          // TODO oxirgi kirgan manzil bo'yicha yunaltirish
+          this.router.navigate(["/admin"]);
         } else {
           this.router.navigate(['/admin']);
         }

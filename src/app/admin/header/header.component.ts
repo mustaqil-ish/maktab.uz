@@ -1,5 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtUtil } from 'src/app/core/jwt.util';
 
 @Component({
   selector: 'app-header',
@@ -7,20 +9,22 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
-@Output()toggleSidebarForMe:EventEmitter<any> =new EventEmitter<any>();
+
+  @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor() { }
+  constructor(private jwtUtil:JwtUtil,private router:Router) { }
 
   ngOnInit(): void {
-    }
-  toggleSidebar(){
-this.toggleSidebarForMe.emit();
+  }
+  toggleSidebar() {
+    this.toggleSidebarForMe.emit();
   }
 
 
-  
-
+chiqish(){
+this.jwtUtil.clear();
+this.router.navigate(["/"])
+}
 
 }

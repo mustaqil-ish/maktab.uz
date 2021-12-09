@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
-import { UserRouteAccessService } from './core/user-route-access.service';
+import { UserRouteAccessGuard } from './core/user-route-access.guard';
 
 const routes: Routes = [
 
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessGuard]
   },
   {
     path: 'login',

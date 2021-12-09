@@ -31,6 +31,8 @@ export class AccountService {
     if (!this.userIdentity) {
       return false;
     }
+    if(!this.userIdentity.lavozimlar) return false;
+    
     if (!Array.isArray(lavozimlar)) {
       lavozimlar = [lavozimlar];
     }
