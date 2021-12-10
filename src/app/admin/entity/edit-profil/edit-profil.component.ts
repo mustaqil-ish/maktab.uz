@@ -12,7 +12,7 @@ import { User } from 'src/app/shared/model/user';
 })
 export class EditProfilComponent implements OnInit ,AfterViewInit  {
 
-  displayedColumns: string[] = [ 'ism', 'familiya', 'amal'];
+  displayedColumns: string[] = [ 'ism', 'familiya'];
   dataSource: MatTableDataSource<User>;
   data!: User | null;
 
@@ -21,6 +21,7 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
   isRateLimitReached = false;
   forma: any;
   tahrir = false;
+  passForm:any;
 
   constructor(private userService:AccountService,public fb:FormBuilder ) {
     this.dataSource = new MatTableDataSource;
@@ -28,8 +29,10 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
 
   ngOnInit(): void {
        this.forma= this.fb.group({  
-       ism: [null],
-       familiya: [null],
+       ism: [''],
+       familiya: [''],
+      //  login:[''],
+     
     })
   }
 
@@ -43,7 +46,7 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
   edit(user: any) {
     this.forma.reset(user);
     this.tahrir = true;
-    
+
   }
 
  saqlash() {
@@ -55,4 +58,10 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
 
     })
   }
+
+save(){
+
+}
+
+
 }
