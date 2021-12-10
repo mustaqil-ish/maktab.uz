@@ -1,25 +1,29 @@
-<mat-toolbar style="background-color: #0f172a" >
-<mat-toolbar-row class="justify-content-between">
-    
-    <button style="color: white;" mat-icon-button (click)="toggleSidebar()"><mat-icon>menu</mat-icon></button>
-<div class="row mr-2 ml-auto">
-    <ul>
-        <li>
-            <button (click)="chiqish()" mat-button class="user mt-2 d-flex align-items-center">
-             <mat-icon>exit_to_app</mat-icon>
-                Chiqish
-            </button>
-
-
-            <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              
-            </button>
-        </mat-menu>
-        </li>
-    </ul>
-</div>
-
-</mat-toolbar-row>
-
+<mat-toolbar style="background-color: #0f172a">
+    <mat-toolbar-row class="justify-content-between">
+        <button style="color: white;" mat-icon-button (click)="toggleSidebar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="row mr-2 ml-auto">
+            <ul>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+                        <img class="user-image mr-1 p-2" [src]="myImage" alt="avatar">
+                        Profil
+                        <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <a style="text-decoration: none;" routerLink="edit"> <button mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                Edit profil
+                            </button>
+                        </a>
+                        <button (click)="chiqish()" mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Chiqish
+                        </button>
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>

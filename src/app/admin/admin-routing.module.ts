@@ -6,6 +6,7 @@ import { UserRouteAccessGuard } from "../core/user-route-access.guard";
 import { Lavozim } from "../shared/model/lavozimlar";
 // import { DashboardComponent } from "./dashboard/dashboard.component";
 import { DarsComponent } from "./entity/dars/dars.component";
+import { EditProfilComponent } from "./entity/edit-profil/edit-profil.component";
 import { FanComponent } from "./entity/fan/fan.component";
 import { SinfxonaComponent } from "./entity/sinfxona/sinfxona.component";
 import { TogarakComponent } from "./entity/togarak/togarak.component";
@@ -23,7 +24,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: "xona"
+        redirectTo: "oquvchilar"
       },
       {
         path: 'user',
@@ -36,11 +37,12 @@ const routes: Routes = [
       { path: 'oqituvchilar', component: UqituvchilarComponent},
       { path: 'oquvchilar', component: UquvchilarComponent },
       { path: 'xona', component: XonaComponent },
-      { path: 'togarak', component: TogarakComponent, canActivate: [UserRouteAccessGuard] },
-      { path: 'uquvYili', component: UquvYiliComponent, canActivate: [UserRouteAccessGuard] },
-      { path: 'dars', component: DarsComponent, canActivate: [UserRouteAccessGuard] },
-      { path: 'fan', component: FanComponent, canActivate: [UserRouteAccessGuard] },
-      { path: 'sinf', component: SinfxonaComponent, canActivate: [UserRouteAccessGuard] },
+      { path: 'togarak', component: TogarakComponent },
+      { path: 'uquvYili', component: UquvYiliComponent},
+      { path: 'dars', component: DarsComponent},
+      { path: 'fan', component: FanComponent},
+      { path: 'sinf', component: SinfxonaComponent},
+      {path:"edit",component:EditProfilComponent},
       // {path:'user' ,component:UserComponent ,canActivate:[UserRouteAccessGuard]},
 
 

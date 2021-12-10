@@ -21,8 +21,9 @@ import { MatDeleteDialogOqtuvchiComponent } from "../shared/dialog/mat-delete-di
 import { MatDeleteUquchiComponent } from "../shared/dialog/mat-delete-uquchi/mat-delete-uquchi.component";
 import { XonaDeleteDialogComponent } from "../shared/dialog/xona-delete-dialog/xona-delete-dialog.component";
 import { MatDeleteDialogSinifxonaComponent } from "../shared/dialog/mat-delete-dialog-sinifxona/mat-delete-dialog-sinifxona.component";
-import { AppRoutingModule } from "../app-routing.module";
+// import { AppRoutingModule } from "../app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { EditProfilComponent } from "./entity/edit-profil/edit-profil.component";
 
 @NgModule({
     declarations:[
@@ -44,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         MatDeleteUquchiComponent,
         XonaDeleteDialogComponent,
         MatDeleteDialogSinifxonaComponent,
+        EditProfilComponent
 
         
         

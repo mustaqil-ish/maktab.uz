@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable, ReplaySubject, of } from 'rxjs';
-import { shareReplay, tap, catchError, map } from 'rxjs/operators';
+import {  catchError } from 'rxjs/operators';
 import { User } from '../shared/model/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
+
   private userIdentity: User | null = null;
   private authenticationState = new ReplaySubject<User | null>(1);
   private userCache$?: Observable<User | null>;
@@ -19,7 +19,16 @@ export class AccountService {
   ) { }
 
   save(user: User): Observable<{}> {
-    return this.http.post(this.baseApi, user);
+    return this.http.put(this.baseApi, user);
+  }
+
+ 
+  public create(userlar: User): Observable<User> {
+    return this.http.post<User>(this.baseApi, userlar);
+  }
+
+  public update(userlar: User): Observable<User> {
+    return this.http.put<User>(this.baseApi, userlar);
   }
   authenticate(identity: User | null): void {
     
@@ -58,7 +67,6 @@ export class AccountService {
 
         }
       );
-
     }
     return this.userCache$;
   }

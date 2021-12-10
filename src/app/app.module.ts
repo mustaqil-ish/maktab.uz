@@ -15,6 +15,7 @@ import { UserComponent } from './admin/entity/user/user.component';
 import { UserActivDialogComponent } from './admin/entity/user-activ-dialog/user-activ-dialog.component';
 import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dialog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

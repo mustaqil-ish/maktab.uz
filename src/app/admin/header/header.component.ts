@@ -10,6 +10,10 @@ import { JwtUtil } from 'src/app/core/jwt.util';
 })
 export class HeaderComponent implements OnInit {
 
+myImage:string="assets/images/WIN_20211118_09_24_28_Pro.jpg";
+
+
+
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter<any>();
 
 

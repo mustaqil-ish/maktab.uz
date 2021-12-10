@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -33,11 +33,18 @@ export class UqituvchilarComponent implements OnInit, AfterViewInit {
   filteredCustomerList: any;
   customerList: any;
 
+ 
+
+
   constructor(private oqituvchilarServive: UqituvchilarService,
     public fb: FormBuilder, private dialog: MatDialog) {
 
     this.dataSource = new MatTableDataSource();
   }
+
+
+
+ 
   ngOnInit(): void {
     this.forma = this.fb.group({
 
@@ -46,7 +53,6 @@ export class UqituvchilarComponent implements OnInit, AfterViewInit {
       ism: [''],
       familiya: [''],
       yosh: [''],
-      // jins: [''],
       maosh: ['']
 
     })
@@ -118,7 +124,12 @@ export class UqituvchilarComponent implements OnInit, AfterViewInit {
   edit(oqtuvchi: any) {
     this.forma.reset(oqtuvchi);
     this.tahrir = true;
+    
+    
+
   }
+
+
   delete(row: any) {
     this.oqituvchilarServive.openConfirmDialog(`o'chirasizmi ${row.id} ? `).afterClosed().subscribe(
       (data => {
