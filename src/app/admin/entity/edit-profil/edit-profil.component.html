@@ -33,24 +33,25 @@
     </mat-card-content>
   </mat-card>
 
-
-  <!-- <form [formGroup]="passForm" (ngSubmit)="save()"> 
+<mat-divider>
+</mat-divider>
+  <form [formGroup]="passForm" (ngSubmit)="save()"> 
 
   <mat-form-field appearance="outline">
     <mat-label>Old password</mat-label>
     <input type="password" formControlName="eskiParol" matInput placeholder="New Password">
     <mat-hint>Parolni kiriting</mat-hint>
   </mat-form-field>
-
+<br>
   <mat-form-field appearance="outline">
     <mat-label>New password</mat-label>
     <input type="password" formControlName="yangiParol" matInput placeholder="New password">
     <mat-hint>New Password</mat-hint>
   </mat-form-field>
-
+<br>
   <mat-form-field appearance="outline">
     <mat-label>Again New Password</mat-label>
-    <input type="password" formControlName="yangiParol" matInput placeholder="Again New Password">
+    <input type="password" formControlName="confirm" matInput placeholder="Again New Password">
     <mat-hint>Again New Password</mat-hint>
   </mat-form-field>
 
@@ -59,7 +60,7 @@
   </button>
 
 
-  </form> -->
+  </form>
 
   
 

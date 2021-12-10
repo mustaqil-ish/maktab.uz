@@ -21,6 +21,9 @@ export class AccountService {
   save(user: User): Observable<{}> {
     return this.http.put(this.baseApi, user);
   }
+  savePassword(user: any): Observable<{}> {
+    return this.http.put(this.baseApi + "/password", user);
+  }
 
  
   public create(userlar: User): Observable<User> {
