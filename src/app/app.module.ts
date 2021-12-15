@@ -14,6 +14,7 @@ import { CoreModule } from './core/core-module';
 import { UserComponent } from './admin/entity/user/user.component';
 import { UserActivDialogComponent } from './admin/entity/user-activ-dialog/user-activ-dialog.component';
 import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dialog.component';
+import { DarsDeleteDialogComponent } from './shared/dialog/dars-delete-dialog/dars-delete-dialog.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dial
     UserComponent,
     UserActivDialogComponent,
     DeleteDialogComponent,
+    DarsDeleteDialogComponent,
       
   ],
   imports: [

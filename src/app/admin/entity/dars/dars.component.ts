@@ -147,10 +147,14 @@ export class DarsComponent implements OnInit, AfterViewInit {
   }
 
   delete(row: any) {
-
-    this.darsService.deleteById(row.id).subscribe(() => {
-      this.sort.sortChange.next(this.sort);
-    })
+    this.darsService.openConfirmDialog(`o'chirasizmi ${row.id} ? `).afterClosed().subscribe(
+      (data => {
+        if (data) {
+          this.darsService.deleteById(row.id).subscribe(() => {
+            this.sort.sortChange.next(this.sort);
+          })
+        }
+      }));
   }
 
 }

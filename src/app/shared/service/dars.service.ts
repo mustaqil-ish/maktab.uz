@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { DeleteDialogTograkComponent } from '../dialog/delete-dialog-tograk/delete-dialog-tograk.component';
 import { Dars } from '../model/dars';
 
 @Injectable({
@@ -15,16 +16,16 @@ export class DarsService {
 
   constructor(private http: HttpClient,private dialog: MatDialog) { }
 
-  // openConfirmDialog(msg : any){
-  //   return this.dialog.open(
-  //     MatDialogDarsComponent,{
-  //       width: "350px",
-  //       height: "200px",
-  //       data : {
-  //         massage : msg
-  //       }
-  //     });
-  // }
+  openConfirmDialog(msg : any){
+    return this.dialog.open(
+      DeleteDialogTograkComponent,{
+        width: "350px",
+        height: "200px",
+        data : {
+          massage : msg
+        }
+      });
+  }
 
   
   
