@@ -13,6 +13,7 @@ export class AccountService {
   private authenticationState = new ReplaySubject<User | null>(1);
   private userCache$?: Observable<User | null>;
   private baseApi = environment.baseUrl + "/api/account";
+  uploadProfileImage: any;
   constructor(
     private http: HttpClient,
     private router: Router,

@@ -15,6 +15,8 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
   forma: any;
   tahrir = false;
   passForm:any;
+  name = 'Angular';
+  url = null;
 
   constructor(private userService:AccountService,public fb:FormBuilder ) {
     
@@ -22,17 +24,31 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
 
   ngOnInit(): void {
        this.forma= this.fb.group({  
-       ism: [''],
-       familiya: [''],
+       ism:[''],
+       familiya:[''],
+       images:[null]
       
     });
        this.passForm= this.fb.group({  
-       eskiParol: [''],
-       yangiParol: [''],
-       confirm: [''],
+       eskiParol:[''],
+       yangiParol:[''],
+       confirm:[''],
       
     })
   }
+
+  onSelectFile(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]);
+
+      reader.onload = (event:any) => { 
+        this.url = event.target.result;
+      }
+    }
+  }
+  
 
   ngAfterViewInit(): void {
     this.userService.identity().subscribe(data => {
@@ -40,6 +56,9 @@ export class EditProfilComponent implements OnInit ,AfterViewInit  {
       this.forma.reset(data);
   
     })
+  }
+   public delete(){
+    this.url = null;
   }
 
   edit(user: any) {

@@ -16,7 +16,6 @@ import { UserActivDialogComponent } from './admin/entity/user-activ-dialog/user-
 import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dialog.component';
 import { DarsDeleteDialogComponent } from './shared/dialog/dars-delete-dialog/dars-delete-dialog.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +38,8 @@ import { DarsDeleteDialogComponent } from './shared/dialog/dars-delete-dialog/da
   ],
 
   providers: [
- 
+    
+   
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
     {

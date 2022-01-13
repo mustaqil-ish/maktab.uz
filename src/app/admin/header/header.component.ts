@@ -10,8 +10,7 @@ import { JwtUtil } from 'src/app/core/jwt.util';
 })
 export class HeaderComponent implements OnInit {
 
-myImage:string="assets/images/WIN_20211118_09_24_28_Pro.jpg";
-
+url!:null;
 
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter<any>();
@@ -24,6 +23,17 @@ myImage:string="assets/images/WIN_20211118_09_24_28_Pro.jpg";
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
   }
+
+  onSelectFile(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event:any) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }}
 
 
 chiqish(){

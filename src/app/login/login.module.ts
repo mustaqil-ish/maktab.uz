@@ -5,9 +5,6 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register/register.component';
 import { MaterialModule } from '../shared/material/material.module';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -18,8 +15,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     MaterialModule,
     LoginRoutingModule,
    
-
-
   ],
 
 })

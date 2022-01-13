@@ -38,4 +38,15 @@ export class UserService {
   public deleteById(id: number): Observable<any> {
     return this.http.delete(this.api + "/" + id);
   }
+
+
+  
+  // uploadProfileImage(formData: FormData): Observable<any> {
+  //   return this.http.post<FormData>('/api/users/upload', formData, {
+  //     reportProgress: true,
+  //     observe: 'events'
+  //   })
+  // }
+
+
 }

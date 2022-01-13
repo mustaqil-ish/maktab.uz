@@ -18,14 +18,16 @@
               <mat-hint>Familiyani kiriting</mat-hint>
             </mat-form-field>
 
-            
-            <!-- <mat-form-field appearance="outline">
-              <mat-label>Login</mat-label>
-              <input formControlName="login" matInput placeholder="Familiya">
-              <mat-hint>Loginni O'zgartir</mat-hint>
-            </mat-form-field>
-            <br> -->
 
+            <label class="hoverable" for="fileInput">
+              <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
+              <div class="hover-text">rasmni tanlang</div>
+              <div class="background"></div>
+            </label>
+            <br/>
+            <input formControlName='images' id="fileInput" type='file' (change)="onSelectFile($event)">
+            <button *ngIf="url" mat-raised-button color="warn"  (click)="delete()" >delete</button>
+            
             <button style="margin-left: 20px; margin-top: 10px;" mat-raised-button color="primary" type="submit">
               update
             </button>

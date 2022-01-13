@@ -8,5 +8,7 @@ export interface User{
     parol:string;
     aktiv:boolean;
     lavozimlar: Array<Lavozim>;
+    image:string;
+    
  
 }

@@ -43,6 +43,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       login: [''],
       parol: [''],
       aktiv: [''],
+      
 
     });
     this.loadData();

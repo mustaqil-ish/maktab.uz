@@ -10,34 +10,6 @@ import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
 
-
-
-
-  // getToken(){
-  //   return localStorage.getItem('token');
-  // }
-  // api = environment.baseUrl + "/api/account";
-  
-
-  // login(loginParol: any): Observable<any>{
-  //   return this.http.post(this.api+"/authenticate", loginParol);
-  // }
-
-  // register(user: any): Observable<any>{
-  //   return this.http.post(this.api + "/register", user);
-  // }
-
-
-  // setToken(token: string){
-  //   localStorage.setItem('token', token);
-  // }
-
-
-
-
-
-
-
   private userIdentity: User | null = null;
   private authenticationState = new ReplaySubject<User | null>(1);
   private userCache$?: Observable<User | null>;
